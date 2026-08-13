@@ -1,0 +1,57 @@
+# Day 47: Speaker representation and preservation
+
+> **Week 7 • Day 5 of 7**  
+> **Navigation:** [← Day 46](day_46.md) | [Week 7 Plan](../Week_7_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 48 →](day_48.md)
+
+---
+
+### Compute Target
+`Modal L4`
+
+---
+
+### 1. Learn
+- Speaker embeddings.
+- Reference conditioned synthesis.
+- Speaker similarity as a measurable but imperfect proxy.
+- Consent and voice identity boundaries.
+
+---
+
+### 2. Build in MendSpeech
+- Choose a speaker conditioned or reference conditioned path that is legally and ethically appropriate for your own or consented samples.
+- Compute speaker embeddings before and after synthesis if tooling is available.
+
+---
+
+### 3. Experiment and Measure
+- Compare full resynthesis with short span reconstruction for speaker similarity.
+
+---
+
+### 4. Required Output Artifacts
+- `src/tts/speaker_conditioning.py`
+- `results/day47_speaker_similarity.csv`
+- `docs/voice_use_policy.md`
+
+---
+
+### 5. Completion Check
+> **Definition of Done for Day 47:**  
+> You can discuss speaker similarity measurements and their limitations without
+claiming identity preservation from listening alone.
+
+---
+
+### 6. Study Method & Protocol
+25 minutes focused reading. 65 minutes implementation or controlled experiment. 20 minutes research
+notebook. 10 minutes commit and explain the result aloud. When debugging is incomplete, continue the
+same task in the next session instead of pretending the day is finished.
+
+---
+
+### 7. References & Resources
+- FastSpeech 2 paper
+- HiFi GAN paper
+- VITS paper
+- DSP references for energy matching and equal power crossfades

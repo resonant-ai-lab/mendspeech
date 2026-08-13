@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Large Audio / Data (leave data manifests tracked)
+*.wav
+*.mp3
+*.flac
+*.ogg
+!data/*.csv
+!data/*.json
+
+# Model Checkpoints & Logs
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.nemo
+wandb/
+runs/
+results/logs/
+
+# Scratch & IDE
+scratch/
+.idea/
+.vscode/
+*.swp
+*.swo

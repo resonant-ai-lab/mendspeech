@@ -1,0 +1,6 @@
+clip_id,speaker_id,file_path,sample_rate,channels,duration_sec,num_samples,rms_energy,rms_db,peak_amplitude,peak_dbfs,clipping_ratio
+clean_01,speaker_female_01,/home/ashwin/Projects/MendSpeech_All_Plans/data/clean_16k/clean_01.wav,16000,1,6.0,96000,0.118595,-18.52,0.776794,-2.19,0.0
+clean_02,speaker_female_01,/home/ashwin/Projects/MendSpeech_All_Plans/data/clean_16k/clean_02.wav,16000,1,6.0,96000,0.114384,-18.83,0.802887,-1.91,0.0
+clean_03,speaker_male_01,/home/ashwin/Projects/MendSpeech_All_Plans/data/clean_16k/clean_03.wav,16000,1,6.5,104000,0.099815,-20.02,0.531189,-5.5,0.0
+clean_04,speaker_male_01,/home/ashwin/Projects/MendSpeech_All_Plans/data/clean_16k/clean_04.wav,16000,1,6.5,104000,0.068252,-23.32,0.462067,-6.71,0.0
+clean_05,speaker_male_02,/home/ashwin/Projects/MendSpeech_All_Plans/data/clean_16k/clean_05.wav,16000,1,6.0,96000,0.036194,-28.83,0.421539,-7.5,0.0

@@ -21,6 +21,7 @@
 ### 2. Build in MendSpeech
 - Use NeMo cache aware streaming inference on a supported FastConformer checkpoint.
 - Log cache related configuration and chunk boundaries.
+- If cache-aware inference is unsupported for the chosen checkpoint, document the limitation and fall back to buffered streaming; the buffered vs cache comparison still runs.
 
 ---
 

@@ -22,6 +22,7 @@ small runs`
 - Run a pretrained ASR model on clean and damaged SpeechDamageBench clips.
 - Store transcript, token outputs if available, and timing metadata.
 - Add a reusable Modal entry point so the same command can run ASR experiments on an L4 without editing deployment code each day.
+- Smoke-test the pretrained direct audio inpainting baseline chosen for Week 8: install it, run one masked span, and record install steps plus a fallback in `docs/baseline_install_notes.md`.
 
 ---
 

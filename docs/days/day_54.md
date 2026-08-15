@@ -21,7 +21,7 @@ plus local analysis`
 ---
 
 ### 2. Build in MendSpeech
-- Select one reproducible pretrained direct audio inpainting or restoration baseline.
+- Use the pretrained direct audio inpainting baseline already selected and smoke-tested in Week 2 (see `docs/baseline_install_notes.md`); do not start model hunting here.
 - Wrap it behind the same benchmark interface used by MendSpeech.
 - Feed identical SpeechDamageBench cases and record the same metrics wherever they are meaningful.
 - Create a failure casebook covering both architectures.

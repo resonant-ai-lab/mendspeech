@@ -17,7 +17,7 @@
 
 ### 2. Build in MendSpeech
 - Clean repository structure.
-- Freeze SpeechDamageBench v0.1 severity presets and at least ten clean reference clips.
+- Freeze SpeechDamageBench v0.1 severity presets and a benchmark set of **≥30 utterances across ≥5 speakers with reference transcripts**, written as speaker-separated train/val/test manifest files.
 - Tag the benchmark package schema and add a minimal usage example independent of MendSpeech.
 
 ---
@@ -29,7 +29,7 @@
 
 ### 4. Required Output Artifacts
 - `reports/week1_audio_foundations.md`
-- `data/week1_reference_manifest.csv`
+- `data/benchmark_manifest.csv` (train/val/test splits, transcripts included)
 - `speechdamagebench/README.md`
 - `speechdamagebench/VERSION`
 

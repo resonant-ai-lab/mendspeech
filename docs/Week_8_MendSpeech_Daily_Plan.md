@@ -52,6 +52,7 @@ dry run`
 - Primary question: can selective semantic repair improve intelligibility while preserving more original speech than full resynthesis?
 - Secondary question: can uncertainty guided context allocation improve the latency versus accuracy operating point?
 - Architecture question: when does cascaded ASR plus TTS repair beat or lose to a pretrained direct latent or codec audio inpainting baseline?
+- Scope every claim to the frozen benchmark scale (≥30 utterances, ≤5 speakers) and state the statistical caveat explicitly.
 - Define null outcomes, failure criteria, and claims you will not make.
 
 #### Build in MendSpeech
@@ -178,7 +179,7 @@ plus local analysis`
 - Failure taxonomy across semantic correctness, speaker similarity, prosody, seam quality, and compute.
 
 #### Build in MendSpeech
-- Select one reproducible pretrained direct audio inpainting or restoration baseline.
+- Use the pretrained direct audio inpainting baseline already selected and smoke-tested in Week 2 (see `docs/baseline_install_notes.md`); do not start model hunting here.
 - Wrap it behind the same benchmark interface used by MendSpeech.
 - Feed identical SpeechDamageBench cases and record the same metrics wherever they are meaningful.
 - Create a failure casebook covering both architectures.
@@ -210,6 +211,7 @@ information, and whether direct audio repair earns its extra complexity on your 
 - Abstract, motivation, hypotheses, method, baselines, metrics, results, limitations, ethics, and future work.
 - Difference between observation and causal claim.
 - How to report a negative or mixed architectural comparison honestly.
+- Benchmark scale and its statistical limits: never claim population-level generalization from ≤5 speakers.
 
 #### Build in MendSpeech
 - Write the complete report.

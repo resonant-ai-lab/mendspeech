@@ -125,3 +125,5 @@ mendspeech/
 5. The system explicitly abstains from hallucinating speech when audio is too damaged.
 6. The direct audio baseline is evaluated fairly, with clear documentation of where it outperforms the cascaded path.
 7. You can explain every major model and systems component from first principles without relying on library names as explanations.
+8. Benchmark results are reported at a fixed, documented scale (≥30 utterances, ≥5 speakers, reference transcripts, speaker-separated splits) with the statistical caveat stated in the report.
+9. The direct audio inpainting baseline is selected and smoke-tested no later than Week 2, with install steps and a fallback documented.

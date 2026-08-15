@@ -24,6 +24,7 @@
 ### Build in MendSpeech
 - Create the repository and a minimal audio loader.
 - Record or collect five clean speech clips with consent.
+- Acquire a reference-transcripted subset (e.g., a LibriSpeech dev-clean slice) into `data/benchmark/`; the frozen benchmark will run on labeled clips, not only waveforms.
 - Normalize all clips to a consistent sample rate and mono format.
 
 ### Experiment and Measure
@@ -32,7 +33,8 @@
 
 ### Required Output
 - `notebooks/day01_waveform.ipynb`
-- `data/clean_manifest.csv`
+- `data/clean_manifest.csv` (now includes a `transcript` column)
+- `data/benchmark/` (reference-transcripted corpus slice)
 - `docs/audio_baseline_notes.md`
 
 ### Completion Check
@@ -250,7 +252,7 @@ same task in the next session instead of pretending the day is finished.
 
 ### Build in MendSpeech
 - Clean repository structure.
-- Freeze SpeechDamageBench v0.1 severity presets and at least ten clean reference clips.
+- Freeze SpeechDamageBench v0.1 severity presets and a benchmark set of **≥30 utterances across ≥5 speakers with reference transcripts**, written as speaker-separated train/val/test manifest files.
 - Tag the benchmark package schema and add a minimal usage example independent of MendSpeech.
 
 ### Experiment and Measure
@@ -258,7 +260,7 @@ same task in the next session instead of pretending the day is finished.
 
 ### Required Output
 - `reports/week1_audio_foundations.md`
-- `data/week1_reference_manifest.csv`
+- `data/benchmark_manifest.csv` (train/val/test splits, transcripts included)
 - `speechdamagebench/README.md`
 - `speechdamagebench/VERSION`
 
@@ -308,6 +310,7 @@ small runs`
 - Run a pretrained ASR model on clean and damaged SpeechDamageBench clips.
 - Store transcript, token outputs if available, and timing metadata.
 - Add a reusable Modal entry point so the same command can run ASR experiments on an L4 without editing deployment code each day.
+- Smoke-test the pretrained direct audio inpainting baseline chosen for Week 8: install it, run one masked span, and record install steps plus a fallback in `docs/baseline_install_notes.md`.
 
 ### Experiment and Measure
 - Compare clean and corrupted transcripts on the exact same utterances.
@@ -761,7 +764,7 @@ same task in the next session instead of pretending the day is finished.
 - Create an annotated comparison table: your component, paper definition, production implementation.
 
 ### Experiment and Measure
-- Choose one difference and reproduce its effect on a small benchmark if feasible.
+- Choose one difference and reproduce its effect on a small benchmark if feasible (optional — Week 3 is a learning artifact; the production encoder is NeMo FastConformer from Week 4).
 
 ### Required Output
 - `docs/day20_implementation_comparison.md`
@@ -1172,6 +1175,7 @@ same task in the next session instead of pretending the day is finished.
 ### Build in MendSpeech
 - Use NeMo cache aware streaming inference on a supported FastConformer checkpoint.
 - Log cache related configuration and chunk boundaries.
+- If cache-aware inference is unsupported for the chosen checkpoint, document the limitation and fall back to buffered streaming; the buffered vs cache comparison still runs.
 
 ### Experiment and Measure
 - Compare buffered and cache aware inference on the same audio and same hardware.
@@ -1429,7 +1433,8 @@ same task in the next session instead of pretending the day is finished.
 
 ## DAY 38: Fine tune for damaged speech robustness
 - **Compute:** `Modal L4, consider L40S only if
-memory blocks the planned experiment`
+memory blocks the planned experiment — never
+for latency, RTF, or memory comparisons`
 - **Daily Prompt File:** [`docs/days/day_38.md`](days/day_38.md)
 
 ### Learn
@@ -1941,6 +1946,7 @@ dry run`
 - Primary question: can selective semantic repair improve intelligibility while preserving more original speech than full resynthesis?
 - Secondary question: can uncertainty guided context allocation improve the latency versus accuracy operating point?
 - Architecture question: when does cascaded ASR plus TTS repair beat or lose to a pretrained direct latent or codec audio inpainting baseline?
+- Scope every claim to the frozen benchmark scale (≥30 utterances, ≤5 speakers) and state the statistical caveat explicitly.
 - Define null outcomes, failure criteria, and claims you will not make.
 
 ### Build in MendSpeech
@@ -2107,7 +2113,7 @@ plus local analysis`
 - Failure taxonomy across semantic correctness, speaker similarity, prosody, seam quality, and compute.
 
 ### Build in MendSpeech
-- Select one reproducible pretrained direct audio inpainting or restoration baseline.
+- Use the pretrained direct audio inpainting baseline already selected and smoke-tested in Week 2 (see `docs/baseline_install_notes.md`); do not start model hunting here.
 - Wrap it behind the same benchmark interface used by MendSpeech.
 - Feed identical SpeechDamageBench cases and record the same metrics wherever they are meaningful.
 - Create a failure casebook covering both architectures.
@@ -2149,6 +2155,7 @@ same task in the next session instead of pretending the day is finished.
 - Abstract, motivation, hypotheses, method, baselines, metrics, results, limitations, ethics, and future work.
 - Difference between observation and causal claim.
 - How to report a negative or mixed architectural comparison honestly.
+- Benchmark scale and its statistical limits: never claim population-level generalization from ≤5 speakers.
 
 ### Build in MendSpeech
 - Write the complete report.

@@ -7,7 +7,8 @@
 
 ### Compute Target
 `Modal L4, consider L40S only if
-memory blocks the planned experiment`
+memory blocks the planned experiment — never
+for latency, RTF, or memory comparisons`
 
 ---
 

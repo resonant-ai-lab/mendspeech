@@ -49,6 +49,7 @@ feature tensor. | `Local CPU` | [Open Day 07](days/day_07.md) |
 #### Build in MendSpeech
 - Create the repository and a minimal audio loader.
 - Record or collect five clean speech clips with consent.
+- Acquire a reference-transcripted subset (e.g., a LibriSpeech dev-clean slice) into `data/benchmark/`; the frozen benchmark will run on labeled clips, not only waveforms.
 - Normalize all clips to a consistent sample rate and mono format.
 
 #### Experiment and Measure
@@ -57,7 +58,8 @@ feature tensor. | `Local CPU` | [Open Day 07](days/day_07.md) |
 
 #### Required Output
 - `notebooks/day01_waveform.ipynb`
-- `data/clean_manifest.csv`
+- `data/clean_manifest.csv` (now includes a `transcript` column)
+- `data/benchmark/` (reference-transcripted corpus slice)
 - `docs/audio_baseline_notes.md`
 
 #### Completion Check
@@ -221,7 +223,7 @@ change without reading your code.
 
 #### Build in MendSpeech
 - Clean repository structure.
-- Freeze SpeechDamageBench v0.1 severity presets and at least ten clean reference clips.
+- Freeze SpeechDamageBench v0.1 severity presets and a benchmark set of **≥30 utterances across ≥5 speakers with reference transcripts**, written as speaker-separated train/val/test manifest files.
 - Tag the benchmark package schema and add a minimal usage example independent of MendSpeech.
 
 #### Experiment and Measure
@@ -229,7 +231,7 @@ change without reading your code.
 
 #### Required Output
 - `reports/week1_audio_foundations.md`
-- `data/week1_reference_manifest.csv`
+- `data/benchmark_manifest.csv` (train/val/test splits, transcripts included)
 - `speechdamagebench/README.md`
 - `speechdamagebench/VERSION`
 

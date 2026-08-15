@@ -21,6 +21,7 @@
 ### 2. Build in MendSpeech
 - Create the repository and a minimal audio loader.
 - Record or collect five clean speech clips with consent.
+- Acquire a reference-transcripted subset (e.g., a LibriSpeech dev-clean slice) into `data/benchmark/`; the frozen benchmark will run on labeled clips, not only waveforms.
 - Normalize all clips to a consistent sample rate and mono format.
 
 ---
@@ -33,7 +34,8 @@
 
 ### 4. Required Output Artifacts
 - `notebooks/day01_waveform.ipynb`
-- `data/clean_manifest.csv`
+- `data/clean_manifest.csv` (now includes a `transcript` column)
+- `data/benchmark/` (reference-transcripted corpus slice)
 - `docs/audio_baseline_notes.md`
 
 ---

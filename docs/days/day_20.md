@@ -23,7 +23,7 @@
 ---
 
 ### 3. Experiment and Measure
-- Choose one difference and reproduce its effect on a small benchmark if feasible.
+- Choose one difference and reproduce its effect on a small benchmark if feasible (optional — Week 3 is a learning artifact; the production encoder is NeMo FastConformer from Week 4).
 
 ---
 

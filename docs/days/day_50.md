@@ -15,6 +15,7 @@ dry run`
 - Primary question: can selective semantic repair improve intelligibility while preserving more original speech than full resynthesis?
 - Secondary question: can uncertainty guided context allocation improve the latency versus accuracy operating point?
 - Architecture question: when does cascaded ASR plus TTS repair beat or lose to a pretrained direct latent or codec audio inpainting baseline?
+- Scope every claim to the frozen benchmark scale (≥30 utterances, ≤5 speakers) and state the statistical caveat explicitly.
 - Define null outcomes, failure criteria, and claims you will not make.
 
 ---

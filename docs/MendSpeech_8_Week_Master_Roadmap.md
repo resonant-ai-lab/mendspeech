@@ -68,10 +68,10 @@
 
 | Phase | Expected Effort | Risk Level | Main Challenges & Risk Mitigation |
 | :--- | :--- | :--- | :--- |
-| **Weeks 1 to 3** | 35 to 45 hours | **Low** | Core PyTorch, NumPy, signal processing, and tensor math. Keep local tests fast. |
+| **Weeks 1 to 3** | 35 to 45 hours | **Low** | Core PyTorch, NumPy, signal processing, and tensor math. Keep local tests fast. Freeze the reference-transcripted corpus (≥30 utterances, ≥5 speakers) early so Week 2 WER is meaningful. |
 | **Weeks 4 to 5** | 45 to 55 hours | **High** | NVIDIA NeMo framework configuration, streaming cache tensors, chunk masks, GPU timing, and Modal deployment. |
 | **Week 6** | 25 to 35 hours | **Medium** | Data splits, fine-tuning stability, SpecAugment, ECE temperature scaling, and evaluation discipline. |
-| **Weeks 7 to 8** | 40 to 50 hours | **Medium–High** | Speaker-conditioned TTS latency, seam artifact debugging, direct audio baseline integration, and research synthesis. |
+| **Weeks 7 to 8** | 40 to 50 hours | **Medium–High** | Speaker-conditioned TTS latency, seam artifact debugging, direct audio baseline integration, and research synthesis. The direct inpainting baseline must be chosen and smoke-tested in Week 2 — never defer model selection to Week 8. |
 | **Total** | **150 to 185 hours** | — | *Do not rush through days without fulfilling the completion checks.* |
 
 ---
@@ -87,6 +87,8 @@
 
 > [!TIP]
 > **Handling Incomplete Tasks:** If debugging takes longer than 65 minutes, continue the exact same task in the next session rather than pretending the day is finished.
+>
+> **Timebox rule:** any day may consume at most two extra sessions (~6 hours total). After that, log the remaining work as *deferred*, land the day's core deliverable in its minimal working form, and move on. A working end-to-end pipeline beats a perfect week.
 
 ---
 
@@ -94,6 +96,7 @@
 - **Weeks 1 to 3:** Run locally on CPU. Only use GPU when scaling test runs.
 - **Weeks 4 to 8:** Default to **Modal L4 (24GB VRAM)** for reproducible inference, streaming, fine-tuning, and benchmarks.
 - **Hardware Consistency:** Keep hardware strictly fixed across any latency, RTF, or memory comparison.
+- **Budget Reality:** Modal L4 costs roughly $0.38/hour; expect 30–60 GPU-hours across Weeks 4–8 (≈ **$15–30 total**). Batch experiments to avoid per-run cold-start overhead, and never use a larger GPU (L40S/A100) for any latency, RTF, or memory comparison.
 
 ---
 

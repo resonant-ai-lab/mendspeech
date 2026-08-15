@@ -1,6 +1,8 @@
 # MendSpeech Complete 56-Day Plan
 
 > **All 56 Daily Plans Compiled into a Single Searchable Reference.**
+>
+> **v1:** Execution calendar and session compression are governed by [REVISED_EXECUTION_PLAN.md](REVISED_EXECUTION_PLAN.md). Under v1 some days are learn-only, merged, or dropped — statuses are marked in the weekly guides and the affected day files. This compiled file preserves the full original 56-day content for reference.
 
 ---
 

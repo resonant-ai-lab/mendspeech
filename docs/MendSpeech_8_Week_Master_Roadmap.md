@@ -7,6 +7,8 @@
 > [!IMPORTANT]
 > **Timeline & Workload Realism:**  
 > Eight weeks (56 days) is the foundational structure. A realistic execution window is **8 to 10 weeks** and roughly **150 to 185 focused engineering hours**. Do not sacrifice deep understanding to preserve an arbitrary calendar deadline.
+>
+> **October update:** The execution calendar is now governed by [REVISED_EXECUTION_PLAN.md](REVISED_EXECUTION_PLAN.md) — October completion, milestone gates, compressed Weeks 3–4 (merged Encoder Block) and Week 8, plus four add-on labs. This roadmap defines content order and depth, not dates.
 
 ---
 

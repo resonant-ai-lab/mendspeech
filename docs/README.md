@@ -63,6 +63,7 @@ When working with an AI agent:
 ---
 
 ## 📚 Core Documentation Links
+- [**Revised Execution Plan — October calendar, gates & add-on labs**](REVISED_EXECUTION_PLAN.md)
 - [**MendSpeech Project Blueprint**](MendSpeech_Project_Blueprint.md)
 - [**8-Week Master Roadmap**](MendSpeech_8_Week_Master_Roadmap.md)
 - [**Complete 56-Day Searchable Plan**](MendSpeech_Complete_56_Day_Plan.md)

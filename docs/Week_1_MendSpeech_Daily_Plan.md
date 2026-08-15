@@ -8,6 +8,8 @@
 > [!IMPORTANT]
 > **Week Milestone:**  
 > Build the audio laboratory and make SpeechDamageBench a deterministic standalone package.
+>
+> **v1 October calendar:** Gate 1 target **Aug 23**. Day 01 is complete; Days 02–07 run as written.
 
 ---
 

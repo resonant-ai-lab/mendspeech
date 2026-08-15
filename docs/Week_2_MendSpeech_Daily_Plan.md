@@ -8,6 +8,8 @@
 > [!IMPORTANT]
 > **Week Milestone:**  
 > Build the recognition and uncertainty layer, plus a reusable Modal execution path.
+>
+> **v1 October calendar:** Gate 2 target **Sep 1**. Days 08–14 run as written, then **Add-on A** (diarization + VAD lab) on the Gate 2 weekend.
 
 ---
 

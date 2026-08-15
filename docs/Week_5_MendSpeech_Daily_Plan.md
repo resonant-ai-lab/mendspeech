@@ -8,6 +8,8 @@
 > [!IMPORTANT]
 > **Week Milestone:**  
 > Turn the recognizer into a real time system and test uncertainty guided context spending.
+>
+> **v1 October calendar:** Gate 4 target **Sep 27**. Days 29–35 run as written, then **Add-on B** (serving deployment) on the Gate 4 weekend.
 
 ---
 

@@ -8,6 +8,8 @@
 > [!IMPORTANT]
 > **Week Milestone:**  
 > Adapt the recognizer to damaged speech while learning training and calibration discipline.
+>
+> **v1 October calendar:** Gate 5 target **Oct 3**. Days 36–42 run as written (Day 40 is now the RNN-T theory + quantization lab).
 
 ---
 

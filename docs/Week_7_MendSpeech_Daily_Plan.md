@@ -8,6 +8,8 @@
 > [!IMPORTANT]
 > **Week Milestone:**  
 > Build MendSpeech V1 as a cascaded selective repair baseline with explicit seam diagnostics.
+>
+> **v1 October calendar:** Gate 6 target **Oct 18**. Days 43–49 run as written, then **Add-on D** (voice-agent demo) on the Gate 6 weekend.
 
 ---
 

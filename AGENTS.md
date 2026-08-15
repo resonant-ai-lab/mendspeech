@@ -32,11 +32,10 @@ the plan.
    (v1, October calendar) governs pacing, gates, scope, and compression. The
    blueprint and roadmap define content and depth. On any calendar or scope
    conflict, the execution plan wins.
-2. **This repository is PUBLIC.** Never add personal-schedule or job-search
-   content to tracked files (daytime reading arrangements, application
-   tracking, company target lists, employment details). `PRIVATE_PLAN_NOTES.md`
-   is deliberately gitignored — never stage it, never commit it, never remove
-   its ignore entry. Review `git diff --cached` before every commit.
+2. **This repository is PUBLIC.** Personal content of any kind stays out of
+   tracked files. `PRIVATE_PLAN_NOTES.md` is gitignored by design — never
+   stage it, never commit it, never remove its ignore entry. Review
+   `git diff --cached` before every commit.
 3. **Never fake completion.** A day is done only when its day file's
    Completion Check passes and its Required Output artifacts exist. If work is
    incomplete, say so and continue the same task next session — do not claim

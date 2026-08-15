@@ -3,6 +3,8 @@
 > **Week 8 • Day 6 of 7**  
 > **Navigation:** [← Day 54](day_54.md) | [Week 8 Plan](../Week_8_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 56 →](day_56.md)
 
+> **v1 STATUS: MERGED with [Day 56](day_56.md) — one combined session.** Write the report alongside the final demo.
+
 ---
 
 ### Compute Target

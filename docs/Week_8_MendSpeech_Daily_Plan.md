@@ -8,6 +8,8 @@
 > [!IMPORTANT]
 > **Week Milestone:**  
 > Freeze the benchmark, run controlled ablations, compare architectures, and publish a reproducible result.
+>
+> **v1 October calendar:** Gate 7 target **Oct 25**. This week compresses to **5 build sessions** — see the v1 Compression Map below.
 
 ---
 
@@ -33,6 +35,18 @@ limitations without opening the source code first. | `Local CPU` | [Open Day 55]
 | **Day 56** | Final product, demo, and clean reproduction | A new user can understand, run, and evaluate MendSpeech, SpeechDamageBench,
 the cascaded baseline, and the direct audio comparison, and you can defend every major design decision. | `Modal L4 for inference, local CPU for
 interface and analysis` | [Open Day 56](days/day_56.md) |
+
+---
+
+## v1 Compression Map (October Calendar)
+
+| Day | v1 Status | Note |
+| :--- | :--- | :--- |
+| **Day 50** | CORE | Freeze research questions and baselines |
+| **Day 51** | CORE | SpeechDamageBench v1 release + frozen evaluation |
+| **Days 52 + 53** | MERGED — one session | Run recognition/context and repair/seam ablations together on the frozen harness |
+| **Day 54** | CORE | Direct audio inpainting comparison |
+| **Days 55 + 56** | MERGED — one session | Write the report alongside the final demo; span-sensitivity ablation drops |
 
 ---
 

@@ -3,6 +3,8 @@
 > **Week 8 • Day 3 of 7**  
 > **Navigation:** [← Day 51](day_51.md) | [Week 8 Plan](../Week_8_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 53 →](day_53.md)
 
+> **v1 STATUS: MERGED with [Day 53](day_53.md) — one combined session.** Run recognition/context and repair/seam ablations together on the frozen harness.
+
 ---
 
 ### Compute Target

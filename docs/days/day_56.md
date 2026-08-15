@@ -3,6 +3,8 @@
 > **Week 8 • Day 7 of 7**  
 > **Navigation:** [← Day 55](day_55.md) | [Week 8 Plan](../Week_8_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Summary →](../INDEX.md)
 
+> **v1 STATUS: CORE — absorbs Day 55.** Final demo plus report completion in one session.
+
 ---
 
 ### Compute Target

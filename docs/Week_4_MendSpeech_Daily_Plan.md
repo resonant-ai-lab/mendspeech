@@ -8,6 +8,8 @@
 > [!IMPORTANT]
 > **Week Milestone:**  
 > Measure why FastConformer is efficient and freeze a reproducible baseline.
+>
+> **v1 October calendar:** Gate 3 target **Sep 13** (shared with Week 3 — merged Encoder Block). This week compresses to **5 build sessions** — see the v1 Compression Map below.
 
 ---
 
@@ -25,6 +27,20 @@ attention cost. | `Modal L4 useful` | [Open Day 23](days/day_23.md) |
 | **Day 27** | FastConformer failure casebook | You can name at least three repeatable failure patterns and propose a testable
 reason for each. | `Modal L4` | [Open Day 27](days/day_27.md) |
 | **Day 28** | Week 4 integration | MendSpeech now has a measured, inspectable FastConformer recognition core. | `Modal L4` | [Open Day 28](days/day_28.md) |
+
+---
+
+## v1 Compression Map (October Calendar)
+
+| Day | v1 Status | Note |
+| :--- | :--- | :--- |
+| **Day 22** | LEARN-ONLY — merged into Day 23 | Paper notes and compute estimates only; no session |
+| **Day 23** | CORE — absorbs Day 22 | Also cover the FastConformer-vs-Conformer comparison checklist |
+| **Day 24** | CORE | Pretrained baseline, frozen and reproducible |
+| **Day 25** | CORE | Context and attention limits |
+| **Day 26** | CORE | Efficiency benchmark harness |
+| **Day 27** | MERGED into Day 28 | Keep only the top-3 failure patterns |
+| **Day 28** | CORE — absorbs Day 27 | Integration + top-3 failure casebook |
 
 ---
 

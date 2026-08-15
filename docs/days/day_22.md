@@ -3,6 +3,8 @@
 > **Week 4 • Day 1 of 7**  
 > **Navigation:** [← Day 21](day_21.md) | [Week 4 Plan](../Week_4_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 23 →](day_23.md)
 
+> **v1 STATUS: LEARN-ONLY — merged into [Day 23](day_23.md).** Paper notes and compute estimates only; no separate session.
+
 ---
 
 ### Compute Target

@@ -3,6 +3,8 @@
 > **Week 4 • Day 7 of 7**  
 > **Navigation:** [← Day 27](day_27.md) | [Week 4 Plan](../Week_4_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 29 →](day_29.md)
 
+> **v1 STATUS: CORE — absorbs Day 27.** Integration plus the top-3 failure casebook in one session.
+
 ---
 
 ### Compute Target

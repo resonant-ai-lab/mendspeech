@@ -3,6 +3,8 @@
 > **Week 4 • Day 6 of 7**  
 > **Navigation:** [← Day 26](day_26.md) | [Week 4 Plan](../Week_4_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 28 →](day_28.md)
 
+> **v1 STATUS: MERGED into [Day 28](day_28.md).** Keep only the top-3 failure patterns; no separate session.
+
 ---
 
 ### Compute Target

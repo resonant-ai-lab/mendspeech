@@ -3,6 +3,8 @@
 > **Week 4 • Day 2 of 7**  
 > **Navigation:** [← Day 22](day_22.md) | [Week 4 Plan](../Week_4_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 24 →](day_24.md)
 
+> **v1 STATUS: CORE — absorbs Day 22.** Also cover Day 22's FastConformer-vs-Conformer comparison checklist and compute estimates in this session.
+
 ---
 
 ### Compute Target

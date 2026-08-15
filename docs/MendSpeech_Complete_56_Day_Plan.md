@@ -1339,8 +1339,8 @@ same task in the next session instead of pretending the day is finished.
 - Deliberately use a bad learning rate and record the failure signature.  Modal L4  Day 37  Build a robust fine tuning dataset
 - Audit duplicate and speaker leakage.  Local CPU  Day 38  Fine tune for damaged speech robustness
 - Compare base and adapted model on the frozen test set.  Modal L4, consider L40S only if memory blocks the planned experiment  Day 39  SpecAugment and augmentation ablation
-- Compare no augmentation versus selected augmentation with the same seed and training budget.  Modal L4  Day 40  RNNT and streaming decoding
-- Compare CTC and transducer outputs on selected difficult clips.  Modal L4  Day 41  Confidence calibration for repair decisions
+- Compare no augmentation versus selected augmentation with the same seed and training budget.  Modal L4  Day 40  RNN-T concepts and quantization lab
+- Measure WER, real-time factor, and peak memory before and after quantization on the frozen benchmark subset.  Modal L4  Day 41  Confidence calibration for repair decisions
 - Compare raw and calibrated confidence if a simple method is feasible.  Modal L4 for logits, local CPU for analysis  Day 42  Week 6 robustness milestone
 - Run one fixed benchmark suite and freeze results for Week 8 comparisons.  Modal L4
 
@@ -1505,7 +1505,7 @@ same task in the next session instead of pretending the day is finished.
 
 ---
 
-## DAY 40: RNNT and streaming decoding
+## DAY 40: RNN-T concepts and quantization lab
 - **Compute:** `Modal L4`
 - **Daily Prompt File:** [`docs/days/day_40.md`](days/day_40.md)
 
@@ -1516,20 +1516,23 @@ same task in the next session instead of pretending the day is finished.
 - Blank handling.
 - Streaming emission behavior.
 - Difference from CTC independence.
+- Post-training quantization: dynamic vs static INT8, and why static needs a calibration set.
+- What quantization can and cannot preserve in an ASR model (logit sharpness, confidence behavior).
 
 ### Build in MendSpeech
-- Run or inspect a FastConformer transducer checkpoint.
-- Trace one decoding step conceptually and document tensor roles.
+- Export the Day 38 fine-tuned ASR checkpoint through a quantization-ready path (NeMo export or ONNX).
+- Apply INT8 post-training quantization using a held-out calibration slice of the frozen benchmark.
 
 ### Experiment and Measure
-- Compare CTC and transducer outputs on selected difficult clips.
+- Measure WER, real-time factor, and peak memory before and after quantization on the frozen benchmark subset.
 
 ### Required Output
 - `docs/rnnt_walkthrough.md`
-- `results/day40_ctc_vs_rnnt.csv`
+- `docs/day40_quantization_notes.md`
+- `results/day40_quantization_tradeoffs.csv`
 
 ### Completion Check
-> You can explain RNNT without saying only that it is better for streaming.
+> You can explain RNN-T streaming behavior precisely (not only that it is better for streaming), and state the measured accuracy, latency, and memory cost of INT8 quantization on your model.
 
 ### Study Method
 25 minutes focused reading. 65 minutes implementation or controlled experiment. 20 minutes research

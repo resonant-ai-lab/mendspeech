@@ -37,6 +37,9 @@ wandb/
 runs/
 results/logs/
 
+# Private planning notes — personal schedule/job material, never publish
+PRIVATE_PLAN_NOTES.md
+
 # Scratch & IDE
 scratch/
 .idea/

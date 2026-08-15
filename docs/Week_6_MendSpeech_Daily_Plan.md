@@ -23,7 +23,7 @@ duplicates. | `Local CPU` | [Open Day 37](days/day_37.md) |
 regressed. | `Modal L4, consider L40S only if
 memory blocks the planned experiment` | [Open Day 38](days/day_38.md) |
 | **Day 39** | SpecAugment and augmentation ablation | You can separate the effect of augmentation from the effect of extra training time. | `Modal L4` | [Open Day 39](days/day_39.md) |
-| **Day 40** | RNNT and streaming decoding | You can explain RNNT without saying only that it is better for streaming. | `Modal L4` | [Open Day 40](days/day_40.md) |
+| **Day 40** | RNN-T concepts and quantization lab | You can explain RNN-T streaming behavior precisely (not only that it is better for streaming), and state the measured accuracy, latency, and memory cost of INT8 quantization on your model. | `Modal L4` | [Open Day 40](days/day_40.md) |
 | **Day 41** | Confidence calibration for repair decisions | Repair thresholds are now justified from held out evidence rather than guessed. | `Modal L4 for logits, local CPU for
 analysis` | [Open Day 41](days/day_41.md) |
 | **Day 42** | Week 6 robustness milestone | MendSpeech can demonstrate measured robustness gains or clearly document a
@@ -150,7 +150,7 @@ regressed.
 
 ---
 
-### DAY 40: RNNT and streaming decoding
+### DAY 40: RNN-T concepts and quantization lab
 - **Compute:** `Modal L4`
 - **Dedicated Daily File:** [`docs/days/day_40.md`](days/day_40.md)
 
@@ -161,20 +161,23 @@ regressed.
 - Blank handling.
 - Streaming emission behavior.
 - Difference from CTC independence.
+- Post-training quantization: dynamic vs static INT8, and why static needs a calibration set.
+- What quantization can and cannot preserve in an ASR model (logit sharpness, confidence behavior).
 
 #### Build in MendSpeech
-- Run or inspect a FastConformer transducer checkpoint.
-- Trace one decoding step conceptually and document tensor roles.
+- Export the Day 38 fine-tuned ASR checkpoint through a quantization-ready path (NeMo export or ONNX).
+- Apply INT8 post-training quantization using a held-out calibration slice of the frozen benchmark.
 
 #### Experiment and Measure
-- Compare CTC and transducer outputs on selected difficult clips.
+- Measure WER, real-time factor, and peak memory before and after quantization on the frozen benchmark subset.
 
 #### Required Output
 - `docs/rnnt_walkthrough.md`
-- `results/day40_ctc_vs_rnnt.csv`
+- `docs/day40_quantization_notes.md`
+- `results/day40_quantization_tradeoffs.csv`
 
 #### Completion Check
-> You can explain RNNT without saying only that it is better for streaming.
+> You can explain RNN-T streaming behavior precisely (not only that it is better for streaming), and state the measured accuracy, latency, and memory cost of INT8 quantization on your model.
 
 ---
 

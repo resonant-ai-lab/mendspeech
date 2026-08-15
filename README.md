@@ -44,6 +44,8 @@ When working with an AI agent:
    - **20 min:** Update the research notebook (`notebooks/` or `results/`).
    - **10 min:** Validate against `# 5. Completion Check` and commit artifacts under `# 4. Required Output`.
 3. **Keep Compute Fixed:** Check the `Compute Target` (e.g., Local CPU for Weeks 1–3, Modal L4 for Weeks 4–8).
+4. **Split Sessions Allowed:** Complete a day's `Learn` block and its `Build`/`Experiment` blocks in separate sittings within the same calendar day — but never start a build session without the Learn block read, and never end one without a commit.
+5. **Pace by Gates, Not Dates:** Follow the [Revised Execution Plan](docs/REVISED_EXECUTION_PLAN.md) — day numbering defines the sequence; milestone gates define progress.
 
 ---
 
@@ -63,6 +65,7 @@ When working with an AI agent:
 ---
 
 ## 📚 Core Documentation Links
+- [**Revised Execution Plan v2 — gates, add-on labs, pacing**](docs/REVISED_EXECUTION_PLAN.md)
 - [**MendSpeech Project Blueprint**](MendSpeech_Project_Blueprint.md)
 - [**8-Week Master Roadmap**](MendSpeech_8_Week_Master_Roadmap.md)
 - [**Complete 56-Day Searchable Plan**](MendSpeech_Complete_56_Day_Plan.md)

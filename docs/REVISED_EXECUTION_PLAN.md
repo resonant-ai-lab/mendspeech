@@ -1,83 +1,73 @@
-# Revised Execution Plan (v2)
+# Revised Execution Plan (v1 — October Calendar)
 
-> **Status:** This document re-baselines the calendar and adds four portfolio add-on labs.
-> The 56 day files remain the source of truth for daily content; this file governs **pacing, gates, and add-ons**.
-
----
-
-## What Changed From v1
-
-1. **Calendar re-baseline:** the 8-week calendar becomes milestone gates over roughly 18–20 weeks at a sustainable 5–6 evening sessions per week (realistic completion: mid-December for the core spine, add-ons landing by year-end).
-2. **Day 40 redefined:** RNN-T stays as theory; the hands-on block is now an INT8 quantization lab on the Day 38 fine-tuned model (accuracy/latency/memory trade-offs). See [`days/day_40.md`](days/day_40.md).
-3. **Four add-on labs added** (A–D below): diarization/VAD, serving deployment, a VLM fine-tune lab, and a voice-agent loop demo. Each is small (1–3 sessions) and slots in after a specific gate.
-4. **Fallback rule made explicit** (see below) to protect the schedule without gutting learning.
-
-Everything else — blueprint, metrics, ablations, definition of done — is unchanged.
+> **Status:** This document re-baselines the calendar to an **October 25 completion** and adds four add-on labs (one deferred to November).
+> The 56 day files remain the source of truth for daily content; this file governs **pacing, gates, compression decisions, and add-ons**.
 
 ---
 
-## Session Protocol (v2)
+## What Changed From the Original 8-Week Plan
 
+1. **Completion target moved from December to October 25** (buffer through October 31). This requires a mandatory **6 sessions per week** cadence and three scope compressions (below).
+2. **Weeks 3–4 merged into a 10-session "Encoder Block."** Precise mapping lives in the Week 3 and Week 4 guides (v1 Compression Maps): Days 15, 16, 18, 19, 21 and Days 23, 24, 25, 26, 28 run as sessions; Day 17 becomes learn-only (its macaron build moves into Day 18); Day 20 is dropped as a session; Day 22 merges into Day 23; Day 27 folds into Day 28. Everything downstream uses pretrained NeMo FastConformer. Rationale: the original plan already classified the scratch encoder as a *learning artifact*; jobs hire the shipped, measured system.
+3. **Week 8 compressed to 5 sessions** (mapping in the Week 8 guide): Days 52+53 merge into one combined ablation session, Days 55+56 merge into one report-plus-demo session; the span-sensitivity ablation drops. Keeps the core cascaded-vs-direct comparison, the clean-speech regression check, and the report.
+4. **Add-on C (VLM lab) deferred to November**, post-completion. It serves a different door and must not compete with the October finish.
+5. **Safety valve:** if two full weeks are missed, the December calendar automatically applies again — no renegotiation, no guilt, just re-date the gates.
+
+Everything else — blueprint, metrics, definition of done, split-session protocol — is unchanged.
+
+---
+
+## Session Protocol (unchanged rules, stricter cadence)
+
+- **Cadence: 6 sessions per week, mandatory.** Five weekday evenings + Saturday. **Sunday is recovery-only:** catch up a missed session or rest. Never bank on Sunday for new material.
 - **Split sessions allowed:** a day's `Learn` block and its `Build`/`Experiment` blocks may happen in separate sittings on the same calendar day. Never start a build session without the Learn block read; never end one without a commit.
-- **Cadence:** 5–6 build sessions per week plus one longer weekend buffer session for anything that slipped.
-- **Timebox rule (unchanged):** maximum 2 extra sessions per day beyond the standard protocol.
-- **Gates, not dates:** if a gate target date slips, re-date the remaining gates. Do not compress experiment quality to hit a date.
+- **Theory blocks are non-negotiable.** Under compression they are the first thing schedule pressure attacks and the last thing that can be cut — they are what makes the artifacts defensible.
+- **Timebox rule (unchanged):** maximum 2 extra sessions per day.
 
 ---
 
-## Milestone Gates
+## Milestone Gates (October calendar)
 
-| Gate | Days | Exit Evidence | Planned Target |
+| Gate | Days | Exit Evidence | Target |
 | :--- | :--- | :--- | :--- |
-| **Gate 1** | 01–07 | Audio lab + `SpeechDamageBench` v0; frozen benchmark (≥30 transcripted utterances, ≥5 speakers, speaker-separated splits) | **Sep 6** |
-| **Gate 2** | 08–14 | ASR baseline + confidence + Modal pipeline; direct inpainting baseline selected and smoke-tested. **Then Add-on A** | **Sep 27** |
-| **Gate 3** | 15–21 | Scratch Conformer completed as a **learning artifact** (Day 20 benchmark optional) | **Oct 11** |
-| **Gate 4** | 22–28 | Reproducible FastConformer baseline + subsampling/efficiency profiling. **Fallback decision point** | **Oct 25** |
-| **Gate 5** | 29–35 | Cache-aware streaming ASR with adaptive-context results. **Then Add-on B** | **Nov 15** |
-| **Gate 6** | 36–42 | Robust fine-tuning + Day 40 quantization + calibration; frozen Week 6 benchmark. **Then Add-on C** | **Dec 6** |
-| **Gate 7** | 43–49 | MendSpeech V1 complete: selective TTS repair with boundary matching and seam diagnostics. **Then Add-on D** | **Dec 27** |
-| **Gate 8** | 50–56 | Capstone: cascaded vs direct repair, Pareto ablations, final report | **Jan 17** |
+| **Gate 1** | 02–07 | Audio lab + `SpeechDamageBench` v0; frozen benchmark (≥30 transcripted utterances, ≥5 speakers, speaker-separated splits) | **Aug 23** |
+| **Gate 2** | 08–14 | ASR baseline + confidence + Modal pipeline; inpainting baseline smoke-tested. **Then Add-on A** (weekend) | **Sep 1** |
+| **Gate 3** | 15–28 (compressed to 10 sessions) | **Encoder Block:** scratch attention, convolution, and macaron modules with shape/gradient tests; pretrained FastConformer baseline reproducing reference WER; subsampling profiling; top-3 failure casebook | **Sep 13** |
+| **Gate 4** | 29–35 | Cache-aware streaming ASR with adaptive-context results. **Then Add-on B** (weekend) | **Sep 27** |
+| **Gate 5** | 36–42 | Robust fine-tuning + Day 40 quantization + calibration; frozen Week 6 benchmark | **Oct 3** |
+| **Gate 6** | 43–49 | MendSpeech V1 complete: selective TTS repair, boundary matching, seam diagnostics. **Then Add-on D** (weekend) | **Oct 18** |
+| **Gate 7** | 50–56 (compressed to 5 sessions) | Capstone: cascaded vs direct repair, core Pareto ablation, clean-speech regression check, final report | **Oct 25** |
 
----
-
-## Fallback Rule (decided in advance)
-
-If **Gate 4 finishes more than two weeks past its target date**, switch Weeks 5–6 to a pretrained NeMo FastConformer checkpoint instead of the scratch encoder. Weeks 3–4 have already delivered their learning value by then; the shipped, measured system is what matters for everything after Gate 4.
+Buffer: October 26–31 for slippage, report polish, and demo recording.
 
 ---
 
 ## Add-On Labs
 
-Small, self-contained labs that broaden the portfolio beyond the core project. Each is optional-if-under-pressure but strongly recommended, and each produces a measurable artifact.
-
-### Add-on A — Diarization & VAD Lab *(after Gate 2, ~2 sessions)*
-- **Build:** run pyannote (or equivalent) speaker diarization + voice activity detection over the frozen SpeechDamageBench set, clean and damaged variants.
+### Add-on A — Diarization & VAD Lab *(Gate 2 weekend, ~2 sessions)*
+- **Build:** pyannote (or equivalent) diarization + VAD over the frozen SpeechDamageBench set, clean and damaged variants.
 - **Measure:** diarization error rate clean vs damaged; VAD boundary shift under dropouts.
 - **Artifacts:** `results/addon_a_diarization_der.csv`, `docs/addon_a_notes.md`.
-- **Compute:** Modal L4 or local CPU.
 
-### Add-on B — Serving Deployment *(after Gate 5, ~2 sessions)*
-- **Build:** wrap the streaming ASR in a FastAPI service, containerize with Docker, deploy on Modal.
+### Add-on B — Serving Deployment *(Gate 4 weekend, ~2 sessions)*
+- **Build:** FastAPI service around the streaming ASR, Dockerized, deployed on Modal.
 - **Measure:** RTF p50/p95 under ~8 concurrent streams, cold-start time, peak GPU memory.
-- **Artifacts:** `infra/serve/` (Dockerfile + app), `results/addon_b_serving.csv`.
+- **Artifacts:** `infra/serve/`, `results/addon_b_serving.csv`.
 
-### Add-on C — VLM Fine-Tune Lab *(after Gate 6, 1 weekend + 1 session)*
-- **Purpose:** a second-modality artifact proving training/eval discipline transfers (document understanding).
-- **Build:** LoRA fine-tune a small open VLM (Qwen2-VL-2B or SmolVLM) on a small form/document field-extraction set; build a strict eval.
-- **Measure:** exact-match field accuracy before vs after fine-tuning.
-- **Artifacts:** `experiments/addon_c_vlm/`, `results/addon_c_vlm_extraction.csv`.
-- **Compute:** Modal L4.
+### Add-on D — Voice-Agent Loop Demo *(Gate 6 weekend, ~2 sessions)*
+- **Build:** streaming ASR → LLM → TTS loop (Week 7 model or API), one recorded demo clip.
+- **Measure:** per-stage latency budget and end-to-end response time.
+- **Artifacts:** `app/voice_agent_demo.py`, `results/addon_d_latency_budget.csv`, demo clip.
 
-### Add-on D — Voice-Agent Loop Demo *(after Gate 7, ~2 sessions)*
-- **Build:** minimal end-to-end loop — streaming ASR → LLM → TTS (Week 7 model or API) — with one recorded demo clip.
-- **Measure:** per-stage latency budget (ASR / LLM / TTS) and end-to-end response time.
-- **Artifacts:** `app/voice_agent_demo.py`, `results/addon_d_latency_budget.csv`, demo clip in `results/`.
+### Add-on C — VLM Fine-Tune Lab *(DEFERRED to November, post-completion)*
+- LoRA fine-tune a small open VLM (Qwen2-VL-2B or SmolVLM) on form/document field extraction with a strict eval. Runs after Gate 7; it must not compete with the October finish.
 
 ---
 
-## Completion Definition
+## What the Compression Costs (read this once, accept it)
 
-The original blueprint's Definition of Done still governs the project. Under v2, the plan is complete when:
-1. All 56 days are executed (with the Day 40 quantization substitution),
-2. Add-ons A, B, and D are shipped (C is the first thing to cut if the schedule collapses),
-3. The Week 8 report is published with frozen numbers.
+- **Scratch-encoder depth.** You will not hand-implement the full Conformer (macaron FFNs, full integration, scratch-vs-pretrained benchmark). You implement the two core modules and study the rest through the pretrained model's behavior. The theory blocks still cover the full architecture.
+- **Capstone breadth.** Week 8 keeps the decision-relevant comparisons and drops nice-to-have ablations.
+- **No slack.** At 6 sessions/week the plan has roughly one spare session per 10 days. A wasted week is not recoverable inside October — which is exactly what the safety valve is for.
+
+If this trade stops feeling right mid-flight, the December calendar remains one decision away.

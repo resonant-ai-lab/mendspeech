@@ -3,6 +3,8 @@
 > **Week 3 • Day 4 of 7**  
 > **Navigation:** [← Day 17](day_17.md) | [Week 3 Plan](../Week_3_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 19 →](day_19.md)
 
+> **v1 STATUS: CORE — absorbs Day 17.** In this session, also implement the macaron feed-forward (Day 17's build work), then assemble the full Conformer block.
+
 ---
 
 ### Compute Target

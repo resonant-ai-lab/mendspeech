@@ -8,6 +8,8 @@
 > [!IMPORTANT]
 > **Week Milestone:**  
 > Implement the core encoder pieces so model behavior is not a black box.
+>
+> **v1 October calendar:** Gate 3 target **Sep 13**. This week compresses to **5 build sessions** — see the v1 Compression Map below.
 
 ---
 
@@ -25,6 +27,20 @@ local context it captures. | `Local CPU` | [Open Day 16](days/day_16.md) |
 magic. | `Local CPU` | [Open Day 20](days/day_20.md) |
 | **Day 21** | Week 3 architecture review | You can explain which parts are local, which are global, and which become
 problematic for streaming. | `Local CPU` | [Open Day 21](days/day_21.md) |
+
+---
+
+## v1 Compression Map (October Calendar)
+
+| Day | v1 Status | Note |
+| :--- | :--- | :--- |
+| **Day 15** | CORE | Attention from scratch |
+| **Day 16** | CORE | Conformer convolution module from scratch |
+| **Day 17** | LEARN-ONLY | No build session. Read the Learn block in theory time; the macaron build moves into Day 18. |
+| **Day 18** | CORE — absorbs Day 17 | Implement the macaron FFN here, then assemble the full Conformer block |
+| **Day 19** | CORE — simplified | 2-block encoder + real log-Mel gradient check only |
+| **Day 20** | DROPPED | Reading assignment only: orient in production Conformer code |
+| **Day 21** | CORE | Architecture review milestone |
 
 ---
 

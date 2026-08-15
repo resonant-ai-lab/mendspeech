@@ -3,6 +3,8 @@
 > **Week 3 • Day 3 of 7**  
 > **Navigation:** [← Day 16](day_16.md) | [Week 3 Plan](../Week_3_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 18 →](day_18.md)
 
+> **v1 STATUS: LEARN-ONLY — no build session.** Complete the Learn block during theory time; the macaron build work moves into [Day 18](day_18.md).
+
 ---
 
 ### Compute Target

@@ -3,6 +3,8 @@
 > **Week 3 • Day 6 of 7**  
 > **Navigation:** [← Day 19](day_19.md) | [Week 3 Plan](../Week_3_MendSpeech_Daily_Plan.md) | [Master Index](../INDEX.md) | [Day 21 →](day_21.md)
 
+> **v1 STATUS: DROPPED — no session.** Optional spare-time reading only: orient in production Conformer code. Do not schedule an evening session for this day.
+
 ---
 
 ### Compute Target

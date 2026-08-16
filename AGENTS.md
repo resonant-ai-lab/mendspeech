@@ -146,6 +146,8 @@ Match the style already established in `src/audio/`:
   (`docs/*notes*.md`), and code/tests.
 - Result files are named `dayNN_<what>.<ext>` (e.g.
   `results/day40_quantization_tradeoffs.csv`) exactly as day files specify.
+- Every committed result gets a row in `results/README.md` (day → artifact →
+  one-line finding) in the same session that produces it.
 - The frozen evaluation set (≥30 transcripted utterances, ≥5 speakers,
   speaker-separated splits) is immutable once frozen. Never regenerate or
   re-split it; new experiments get new corruption configs, not a new test set.

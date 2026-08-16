@@ -32,7 +32,7 @@
 
 ### 4. Required Output Artifacts
 - `notebooks/day02_stft.ipynb`
-- `results/stft_parameter_grid.png`
+- `results/day02_stft_parameter_grid.png`
 
 ---
 

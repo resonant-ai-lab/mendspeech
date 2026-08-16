@@ -90,7 +90,7 @@ same preprocessing from code.
 
 #### Required Output
 - `notebooks/day02_stft.ipynb`
-- `results/stft_parameter_grid.png`
+- `results/day02_stft_parameter_grid.png`
 
 #### Completion Check
 > You can choose a reasonable frame and hop configuration and explain why.

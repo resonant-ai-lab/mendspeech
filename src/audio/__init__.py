@@ -13,6 +13,14 @@ from .loader import (
     normalize_audio,
     compute_audio_metadata,
 )
+from .stft import (
+    DEFAULT_HOP_16K,
+    DEFAULT_N_FFT_16K,
+    compute_stft,
+    dominant_frequency,
+    spectrogram_db,
+    stft_resolutions,
+)
 
 __all__ = [
     "AudioMetadata",
@@ -26,4 +34,10 @@ __all__ = [
     "compute_clipping_ratio",
     "normalize_audio",
     "compute_audio_metadata",
+    "DEFAULT_HOP_16K",
+    "DEFAULT_N_FFT_16K",
+    "compute_stft",
+    "dominant_frequency",
+    "spectrogram_db",
+    "stft_resolutions",
 ]

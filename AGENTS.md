@@ -77,6 +77,8 @@ PRIVATE_PLAN_NOTES.md     # Gitignored personal notes — NEVER touch or stage
 
 - Python **>= 3.10**. Install: `pip install -e .` (deps: torch, torchaudio,
   soundfile, librosa, scipy, matplotlib, pandas, numpy).
+- **Use the project venv** (system python has no dependencies installed):
+  `.venv/bin/python -m pytest` or activate `.venv` first.
 - Run tests: **`pytest`** from repo root (config in `pyproject.toml`:
   `pythonpath = ["."]`, `testpaths = ["tests"]`).
 - Run a single module's tests: `pytest tests/test_audio_loader.py`.

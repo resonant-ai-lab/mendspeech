@@ -17,12 +17,16 @@
 - Vocoder.
 - Speaker conditioning.
 - Prosody.
+- Content, speaker, and style representations; why useful factorization is not
+  proof of perfect disentanglement.
 
 ---
 
 ### 2. Build in MendSpeech
 - Run a pretrained TTS system on controlled text.
 - Save generated waveform and intermediate representations if exposed.
+- Record where the selected system injects linguistic content, speaker
+  identity, and style or prosody conditioning.
 
 ---
 

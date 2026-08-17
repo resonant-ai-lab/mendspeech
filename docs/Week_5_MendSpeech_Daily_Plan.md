@@ -9,7 +9,9 @@
 > **Week Milestone:**  
 > Turn the recognizer into a real time system and test uncertainty guided context spending.
 >
-> **v1 October calendar:** Gate 4 target **Sep 27**. Days 29–35 run as written, then **Add-on B** (serving deployment) on the Gate 4 weekend.
+> **v1 October calendar:** Gate 4 target **Sep 27**. Days 29–35 run as
+> written with VAD/endpointing in the live milestone, then complete **Add-on
+> B** (async serving and load behavior) on the Gate 4 weekend.
 
 ---
 
@@ -199,14 +201,20 @@ can be more efficient.
 - **Dedicated Daily File:** [`docs/days/day_35.md`](days/day_35.md)
 
 #### Learn
-- Review buffered streaming, cache aware inference, lookahead, cache failures, and adaptive context.
+- Review buffered streaming, cache aware inference, lookahead, cache failures,
+  adaptive context, VAD-driven endpointing, and partial-versus-final latency.
 
 #### Build in MendSpeech
 - Connect microphone or simulated live audio to the streaming recognizer.
-- Show partial text, confidence timeline, current context mode, and latency.
+- Reuse Add-on A VAD for endpointing and log speech start, speech end, and
+  finalization timestamps.
+- Show partial text, confidence timeline, VAD/endpointing state, current
+  context mode, queue depth, and latency.
 
 #### Experiment and Measure
 - Record a short demo with clean and damaged speech.
+- Measure time to first partial transcript, endpoint delay, false starts, and
+  missed endpoints on the same cases.
 - Document remaining technical limitations honestly.
 
 #### Required Output
@@ -216,6 +224,41 @@ can be more efficient.
 
 #### Completion Check
 > A person can speak and watch MendSpeech transcribe incrementally while exposing
-the state that drives repair decisions.
+the VAD, endpointing, cache, context, and uncertainty state that drives repair
+decisions.
+
+---
+
+## Gate 4 Add-on B — Async Serving and Load Behavior
+
+### Build
+
+- Wrap the streaming recognizer in an async FastAPI/WebSocket service.
+- Dockerize it and deploy on Modal using the same L4 for every comparison.
+- Make per-stream queues, maximum queue depth, backpressure, timeout,
+  disconnect, retry, and fallback behavior explicit.
+- Propagate VAD start/end events and request/run identifiers through the
+  service.
+
+### Experiment and Measure
+
+- Run 1, 4, and 8 concurrent streams with fixed audio, hardware, batching, and
+  model configuration.
+- Record time to first partial transcript, endpoint/finalization delay,
+  end-to-end p50/p95/p99, RTF, cold start, CPU/GPU utilization, peak GPU memory,
+  queue depth, and dropped or delayed chunks.
+- Force one queue-overload or disconnect case and verify bounded, documented
+  recovery behavior.
+
+### Required Output
+
+- `infra/serve/`
+- `results/addon_b_serving.csv`
+- `reports/addon_b_serving.md`
+
+### Completion Check
+
+> You can locate the measured bottleneck, explain the backpressure policy, and
+> reproduce one controlled failure and recovery without silently losing audio.
 
 ---

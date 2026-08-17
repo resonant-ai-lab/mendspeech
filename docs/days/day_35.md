@@ -11,18 +11,24 @@
 ---
 
 ### 1. Learn
-- Review buffered streaming, cache aware inference, lookahead, cache failures, and adaptive context.
+- Review buffered streaming, cache aware inference, lookahead, cache failures,
+  adaptive context, VAD-driven endpointing, and partial-versus-final latency.
 
 ---
 
 ### 2. Build in MendSpeech
 - Connect microphone or simulated live audio to the streaming recognizer.
-- Show partial text, confidence timeline, current context mode, and latency.
+- Reuse Add-on A VAD for endpointing and log speech start, speech end, and
+  finalization timestamps.
+- Show partial text, confidence timeline, VAD/endpointing state, current
+  context mode, queue depth, and latency.
 
 ---
 
 ### 3. Experiment and Measure
 - Record a short demo with clean and damaged speech.
+- Measure time to first partial transcript, endpoint delay, false starts, and
+  missed endpoints on the same cases.
 - Document remaining technical limitations honestly.
 
 ---
@@ -37,7 +43,8 @@
 ### 5. Completion Check
 > **Definition of Done for Day 35:**  
 > A person can speak and watch MendSpeech transcribe incrementally while exposing
-the state that drives repair decisions.
+the VAD, endpointing, cache, context, and uncertainty state that drives repair
+decisions.
 
 ---
 

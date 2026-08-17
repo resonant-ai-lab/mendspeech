@@ -9,7 +9,9 @@
 > **Week Milestone:**  
 > Build the recognition and uncertainty layer, plus a reusable Modal execution path.
 >
-> **v1 October calendar:** Gate 2 target **Sep 1**. Days 08–14 run as written, then **Add-on A** (diarization + VAD lab) on the Gate 2 weekend.
+> **v1 October calendar:** Gate 2 target **Sep 1**. Days 08–14 run as
+> written, then complete mandatory **Add-on A** (timed scratch VAD challenge)
+> on the Gate 2 weekend.
 
 ---
 
@@ -232,5 +234,46 @@ cached`
 #### Completion Check
 > A user can see what the ASR heard and which exact intervals MendSpeech wants to
 preserve or repair.
+
+---
+
+## Gate 2 Add-on A — Timed VAD Challenge
+
+This mandatory two-session add-on turns VAD into implementation and systems
+evidence rather than a library demonstration.
+
+### Session 1 — 2.5-hour constrained build
+
+- Freeze a 30–50-file subset from the labeled benchmark.
+- Without an external API or pretrained VAD, implement deterministic framing,
+  timestamp conversion, speech features, and an explainable decision rule or
+  small classical classifier.
+- Add tests for silence, all-speech input, short clips, frame boundaries, and
+  deterministic evaluation.
+- Stop at 2.5 hours and record what remains; do not polish past the constraint
+  before capturing the result.
+
+### Session 2 — comparison and diagnosis
+
+- Compare the scratch VAD with WebRTC VAD or another local production baseline.
+- Optionally add denoising and diarization as controlled second-stage
+  comparisons; neither may replace the scratch baseline.
+- Measure precision, recall, F1, false alarms, missed speech, onset/offset
+  boundary error in milliseconds, and CPU RTF by corruption type.
+- Write the top three improvements you would make with more time.
+
+### Required Output
+
+- `src/vad/baseline.py`
+- `tests/test_vad.py`
+- `results/addon_a_vad_benchmark.csv`
+- `results/addon_a_diarization_der.csv` when diarization is run
+- `docs/addon_a_notes.md`
+
+### Completion Check
+
+> You can rebuild the scratch baseline under the time constraint, defend the
+> architecture and threshold trade-offs, and explain why the strongest errors
+> occurred.
 
 ---

@@ -13,6 +13,7 @@ MendSpeech_All_Plans/
 │   ├── MendSpeech_Project_Blueprint.md   # Architectural blueprint, metrics, definition of done
 │   ├── MendSpeech_8_Week_Master_Roadmap.md # Timeline, workload, research questions, hardware
 │   ├── MendSpeech_Complete_56_Day_Plan.md# All 56 daily plans compiled in one searchable file
+│   ├── SPEECH_ML_SYSTEMS_DRILLS.md        # Parallel speech systems fundamentals drills
 │   ├── Week_1_MendSpeech_Daily_Plan.md   # Audio DSP & SpeechDamageBench v0
 │   ├── Week_2_MendSpeech_Daily_Plan.md   # ASR, CTC math, confidence & Modal pipeline
 │   ├── Week_3_MendSpeech_Daily_Plan.md   # Conformer encoder from scratch
@@ -67,4 +68,5 @@ When working with an AI agent:
 - [**MendSpeech Project Blueprint**](MendSpeech_Project_Blueprint.md)
 - [**8-Week Master Roadmap**](MendSpeech_8_Week_Master_Roadmap.md)
 - [**Complete 56-Day Searchable Plan**](MendSpeech_Complete_56_Day_Plan.md)
+- [**Speech-ML Systems Drill Track**](SPEECH_ML_SYSTEMS_DRILLS.md)
 - [**Index of PDF Documents**](MendSpeech_PDF_Set_Index.md)

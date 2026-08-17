@@ -3,7 +3,7 @@
 > **Status:** This document re-baselines the calendar to an **October 25 completion** and adds four add-on labs (one post-capstone).
 > The 56 day files remain the source of truth for daily content; this file governs **pacing, gates, compression decisions, and add-ons**.
 >
-> **Speech-ML readiness amendment (August 18, 2026):** the 56-day core
+> **Speech-ML systems amendment (August 18, 2026):** the 56-day core
 > sequence is unchanged. Add-on A is now a mandatory timed VAD build, Add-on B
 > includes production streaming/load behavior, and Add-on C becomes an Indic
 > and code-mixed evaluation instead of an unrelated VLM lab.
@@ -13,17 +13,17 @@
 ## What Changed From the Original 8-Week Plan
 
 1. **Completion target moved from December to October 25** (buffer through October 31). This requires a mandatory **6 sessions per week** cadence and three scope compressions (below).
-2. **Weeks 3–4 merged into a 10-session "Encoder Block."** Precise mapping lives in the Week 3 and Week 4 guides (v1 Compression Maps): Days 15, 16, 18, 19, 21 and Days 23, 24, 25, 26, 28 run as sessions; Day 17 becomes learn-only (its macaron build moves into Day 18); Day 20 is dropped as a session; Day 22 merges into Day 23; Day 27 folds into Day 28. Everything downstream uses pretrained NeMo FastConformer. Rationale: the original plan already classified the scratch encoder as a *learning artifact*; jobs hire the shipped, measured system.
+2. **Weeks 3–4 merged into a 10-session "Encoder Block."** Precise mapping lives in the Week 3 and Week 4 guides (v1 Compression Maps): Days 15, 16, 18, 19, 21 and Days 23, 24, 25, 26, 28 run as sessions; Day 17 becomes learn-only (its macaron build moves into Day 18); Day 20 is dropped as a session; Day 22 merges into Day 23; Day 27 folds into Day 28. Everything downstream uses pretrained NeMo FastConformer. Rationale: the original plan already classified the scratch encoder as a *learning artifact*; the shipped, measured system is the primary research output.
 3. **Week 8 compressed to 5 sessions** (mapping in the Week 8 guide): Days 52+53 merge into one combined ablation session, Days 55+56 merge into one report-plus-demo session; the span-sensitivity ablation drops. Keeps the core cascaded-vs-direct comparison, the clean-speech regression check, and the report.
-4. **Speech-ML readiness is strengthened without reordering the core.** Add-on
+4. **Speech-ML systems depth is strengthened without reordering the core.** Add-on
    A becomes a mandatory from-scratch VAD challenge; Add-on B adds async
    streaming, backpressure, utilization, and tail-latency evidence; Add-on C
    becomes a post-capstone Indic and code-mixed evaluation. The separate
-   [Speech-ML Interview Readiness Track](SPEECH_ML_READINESS_TRACK.md) runs in
+   [Speech-ML Systems Drill Track](SPEECH_ML_SYSTEMS_DRILLS.md) runs in
    short parallel drills and does not consume core build sessions.
 5. **The unrelated VLM lab is removed from this three-month plan.** It can be
-   reconsidered only after the speech portfolio and job search no longer need
-   the time.
+   reconsidered after the speech-system experiments and documentation are
+   complete.
 6. **Safety valve:** if two full weeks are missed, the December calendar automatically applies again — no renegotiation, no guilt, just re-date the gates.
 
 Everything else — blueprint, metrics, definition of done, split-session protocol — is unchanged.
@@ -36,8 +36,8 @@ Everything else — blueprint, metrics, definition of done, split-session protoc
 - **Split sessions allowed:** a day's `Learn` block and its `Build`/`Experiment` blocks may happen in separate sittings on the same calendar day. Never start a build session without the Learn block read; never end one without a commit.
 - **Theory blocks are non-negotiable.** Under compression they are the first thing schedule pressure attacks and the last thing that can be cut — they are what makes the artifacts defensible.
 - **Timebox rule (unchanged):** maximum 2 extra sessions per day.
-- **Interview drills are parallel, not new days.** Run three 30-minute drills
-  per week from the readiness track. Skip a drill before skipping a core
+- **Systems drills are parallel, not new days.** Run three 30-minute drills
+  per week from the systems track. Skip a drill before skipping a core
   Learn/Build/Measure session.
 
 ---
@@ -120,14 +120,14 @@ Buffer: October 26–31 for slippage, report polish, and demo recording.
 
 ---
 
-## Parallel Speech-ML Interview Readiness Track
+## Parallel Speech-ML Systems Drill Track
 
-Use the [Speech-ML Interview Readiness Track](SPEECH_ML_READINESS_TRACK.md)
+Use the [Speech-ML Systems Drill Track](SPEECH_ML_SYSTEMS_DRILLS.md)
 for three 30-minute drills per week. It covers implementation under time
 pressure, gradient descent, transformer linear algebra and tensor shapes,
 Whisper-style chunk processing, CTC versus RNN-T, profiling, and content versus
-speaker/style representations. It produces interview evidence without adding a
-second project or weakening the 56-day build.
+speaker/style representations. It reinforces first-principles understanding
+without adding a second project or weakening the 56-day build.
 
 ---
 

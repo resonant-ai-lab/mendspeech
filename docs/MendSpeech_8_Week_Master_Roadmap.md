@@ -50,7 +50,7 @@
 - **Timed VAD and Production Serving:** Gate 2 adds a constrained scratch VAD
   build; Gate 4 carries it into endpointing, async WebSocket serving,
   backpressure, utilization, and tail-latency measurement.
-- **Speech-Role Readiness:** short parallel fundamentals drills reinforce
+- **Speech-ML Systems Drills:** short parallel fundamentals drills reinforce
   gradient descent, transformer linear algebra, chunked ASR, profiling, and
   representation factorization without displacing the core build.
 - **Indic and Code-Mixed Extension:** the post-capstone add-on evaluates one

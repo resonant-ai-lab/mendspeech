@@ -1,4 +1,4 @@
-# Speech-ML Interview Readiness Track
+# Speech-ML Systems Drill Track
 
 > **Purpose:** reinforce implementation speed, first-principles explanations,
 > and production speech-system judgment alongside the 56-day MendSpeech build.
@@ -14,7 +14,7 @@
   drills when practical.
 - Stop at 30 minutes, save the attempt, and record the first point where the
   explanation or implementation became uncertain.
-- Skip a readiness drill before skipping a core Learn/Build/Measure session.
+- Skip a systems drill before skipping a core Learn/Build/Measure session.
 - Use project evidence in answers; do not memorize product or library names as
   explanations.
 

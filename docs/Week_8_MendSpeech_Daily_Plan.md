@@ -9,7 +9,10 @@
 > **Week Milestone:**  
 > Freeze the benchmark, run controlled ablations, compare architectures, and publish a reproducible result.
 >
-> **v1 October calendar:** Gate 7 target **Oct 25**. This week compresses to **5 build sessions** — see the v1 Compression Map below.
+> **v1 October calendar:** Gate 7 target **Oct 25**. This week compresses to
+> **5 build sessions** — see the v1 Compression Map below. After the frozen
+> capstone, run Add-on C as a separate Indic and code-mixed evaluation; never
+> mutate the capstone benchmark.
 
 ---
 
@@ -280,5 +283,41 @@ interface and analysis`
 #### Completion Check
 > A new user can understand, run, and evaluate MendSpeech, SpeechDamageBench,
 the cascaded baseline, and the direct audio comparison, and you can defend every major design decision.
+
+---
+
+## Post-Capstone Add-on C — Indic & Code-Mixed Speech Evaluation
+
+Run this only after Gate 7 is complete. It is a separate extension, not a
+reason to delay or modify the frozen capstone.
+
+### Session 1 — evaluation slice
+
+- Create a consented or public manifest containing one Indian language the
+  researcher can verify, Indian English, and code-mixed speech.
+- Include multiple speakers, names, numerals, transliterations, and matched
+  clean/noisy/dropout conditions.
+- Run the open MendSpeech path first. Optional hosted backends must stay behind
+  adapters so the core result remains reproducible without private credentials.
+
+### Session 2 — failure analysis
+
+- Measure WER/CER by language slice, entity error rate, VAD/endpointing errors,
+  time to first partial transcript, and p50/p95 latency.
+- Inspect code-switch boundaries, named entities, normalization, accent, and
+  endpointing failures manually.
+- State the small-set limitation and do not make population-level claims.
+
+### Required Output
+
+- `data/indic_codemix_manifest.csv`
+- `results/addon_c_indic_codemix.csv`
+- `reports/addon_c_speech_readiness.md`
+
+### Completion Check
+
+> You can explain at least three multilingual or code-mixing failure modes,
+> identify whether recognition, endpointing, normalization, or synthesis caused
+> each one, and defend the limits of the extension set.
 
 ---

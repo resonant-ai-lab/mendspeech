@@ -49,10 +49,14 @@ seam limitations are documented rather than hidden. | `Modal L4` | [Open Day 49]
 - Vocoder.
 - Speaker conditioning.
 - Prosody.
+- Content, speaker, and style representations; why useful factorization is not
+  proof of perfect disentanglement.
 
 #### Build in MendSpeech
 - Run a pretrained TTS system on controlled text.
 - Save generated waveform and intermediate representations if exposed.
+- Record where the selected system injects linguistic content, speaker
+  identity, and style or prosody conditioning.
 
 #### Experiment and Measure
 - Compare several sentences with punctuation and pacing changes.

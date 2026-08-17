@@ -47,6 +47,15 @@
 - **Boundary Matching Layer:** Week 7 introduces short-time energy matching, local loudness equalization, room-tone handling, and equal-power crossfades with quantitative seam metrics.
 - **Standalone `SpeechDamageBench`:** Packaged as an independent, deterministic, versioned Python library with seed-controlled degradations.
 - **Direct Audio Inpainting Comparison:** Week 8 compares the cascaded baseline against a reproducible pretrained direct latent/codec audio model.
+- **Timed VAD and Production Serving:** Gate 2 adds a constrained scratch VAD
+  build; Gate 4 carries it into endpointing, async WebSocket serving,
+  backpressure, utilization, and tail-latency measurement.
+- **Speech-Role Readiness:** short parallel fundamentals drills reinforce
+  gradient descent, transformer linear algebra, chunked ASR, profiling, and
+  representation factorization without displacing the core build.
+- **Indic and Code-Mixed Extension:** the post-capstone add-on evaluates one
+  verifiable Indian-language slice, Indian English, and code-mixed speech while
+  preserving the frozen core benchmark.
 - **Honest Pacing:** Workload calibrated to 150–185 hours with risk hotspots flagged upfront.
 
 ---

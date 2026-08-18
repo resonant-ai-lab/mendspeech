@@ -1,195 +1,184 @@
-# AGENTS.md
+# Engineering guidelines
 
-Operating instructions for AI coding agents (Claude Code, Codex, OpenCode,
-Cursor, Gemini CLI, etc.) working in this repository. Read this file before
-doing anything. Where these rules conflict with defaults or habits, these
-rules win.
+Rules for anyone changing this repository. They apply to human
+contributors and to any automated assistant. Where these rules conflict
+with a tool's defaults, these rules win.
 
 ---
 
-## 1. Project Context
+## 1. Project
 
-**MendSpeech** is a research and systems project for *selective semantic
-speech restoration under real-time constraints*: detect damaged spans of
-speech with calibrated ASR uncertainty, decide whether to preserve, inspect,
-repair, or abstain, reconstruct only what is justified (cascaded ASR→TTS and
-direct audio-inpainting baselines), and measure everything.
+**MendSpeech** is a speech system: detect damaged spans with calibrated
+ASR uncertainty, decide whether to preserve, inspect, repair, or abstain,
+reconstruct only what is justified, and measure the result.
 
 Two products matter:
+
 1. **MendSpeech** — the end-to-end system (`src/`).
-2. **SpeechDamageBench** — a standalone, versioned damage-generation benchmark
-   that must remain usable without MendSpeech (becomes its own package).
+2. **SpeechDamageBench** — a standalone, versioned damage-generation
+   package that must remain usable without MendSpeech.
 
-The project is executed day-by-day from a fixed 56-day curriculum. An agent's
-job on any given evening is to execute exactly one day file — not to redesign
-the plan.
+Architecture, metrics, and the definition of done live in
+[`docs/MendSpeech_Project_Blueprint.md`](docs/MendSpeech_Project_Blueprint.md).
+Pacing and gates live in
+[`docs/REVISED_EXECUTION_PLAN.md`](docs/REVISED_EXECUTION_PLAN.md).
+On any calendar or scope conflict, the execution plan wins.
 
----
-
-## 2. Critical Rules (Read First)
-
-1. **Plan of record:** [`docs/REVISED_EXECUTION_PLAN.md`](docs/REVISED_EXECUTION_PLAN.md)
-   (v1, October calendar) governs pacing, gates, scope, and compression. The
-   blueprint and roadmap define content and depth. On any calendar or scope
-   conflict, the execution plan wins.
-2. **This repository is PUBLIC.** Personal content of any kind stays out of
-   tracked files. `PRIVATE_PLAN_NOTES.md` is gitignored by design — never
-   stage it, never commit it, never remove its ignore entry. Review
-   `git diff --cached` before every commit.
-3. **Never fake completion.** A day is done only when its day file's
-   Completion Check passes and its Required Output artifacts exist. If work is
-   incomplete, say so and continue the same task next session — do not claim
-   the day is finished to protect a date.
-4. **Never force-push or rewrite pushed history on `main`.**
-5. **Do not redesign the plan unilaterally.** Adding experiments, reordering
-   days, or changing scope is a human decision. Propose it; don't do it.
+Work is scoped to one session spec at a time (`docs/days/day_NN.md`).
+Do not redesign the build order, add experiments, or change scope unless
+the maintainer asks.
 
 ---
 
-## 3. Repository Layout
+## 2. Critical rules
+
+1. **This repository is public.** Personal notes stay out of tracked
+   files. `PRIVATE_PLAN_NOTES.md` and `PRIVATE_LEARNING_WITH_AGENTS.md`
+   are gitignored — never stage them, never commit them, never remove
+   their ignore entries. Review `git diff --cached` before every commit.
+2. **Never fake completion.** A session is done only when its spec's
+   Completion Check passes and its Required Output artifacts exist. If
+   work is incomplete, say so. Do not mark it finished to protect a date.
+3. **Never force-push or rewrite pushed history on `main`.**
+4. **Do not redesign the plan unilaterally.** Propose scope changes;
+   do not apply them.
+
+---
+
+## 3. Layout
 
 ```text
-AGENTS.md                 # This file
-README.md                 # Public navigation index
+AGENTS.md                 # These guidelines
+README.md                 # Public project face
 pyproject.toml            # Package: mendspeech (Python >=3.10)
-src/                      # Source code, one package per blueprint subsystem
-  audio/                  # EXISTS: waveform I/O, resampling, measurements
+src/                      # One package per subsystem
+  audio/                  # EXISTS: waveform I/O, STFT, log-Mel
   asr/ streaming/ controller/ tts/ repair/ baselines/ metrics/ bench/
-                          # PLANNED: create per blueprint as days reach them
-tests/                    # pytest suite (test_*.py), mirrors src structure
-notebooks/                # Research notebooks (dayNN_*.ipynb)
-results/                  # Measured outputs: CSVs, PNGs, tables (dayNN_* naming)
-data/                     # Manifests only (clean_manifest.csv etc.); audio is gitignored
-docs/                     # All planning documents (see below)
-  REVISED_EXECUTION_PLAN.md   # PLAN OF RECORD (v1 October calendar)
-  MendSpeech_Project_Blueprint.md   # Architecture, metrics, definition of done
-  MendSpeech_8_Week_Master_Roadmap.md  # Content order and depth
-  MendSpeech_Complete_56_Day_Plan.md   # Compiled reference (original content)
-  Week_N_MendSpeech_Daily_Plan.md     # Weekly guides + v1 compression maps
-  days/day_NN.md          # Per-day prompt sheets — the unit of execution
-pdfs/                     # Archived original PDFs — NEVER modify
-PRIVATE_PLAN_NOTES.md     # Gitignored personal notes — NEVER touch or stage
+                          # created when that subsystem is reached
+tests/                    # pytest suite (test_*.py), mirrors src
+notebooks/                # Exploration and figures only
+results/                  # Measured CSVs, PNGs, tables
+data/                     # Manifests only; audio is gitignored
+docs/                     # Blueprint, execution plan, session specs
+pdfs/                     # Archived originals — never modify
 ```
 
 ---
 
-## 4. Environment & Commands
+## 4. Environment
 
-- Python **>= 3.10**. Install: `pip install -e .` (deps: torch, torchaudio,
-  soundfile, librosa, scipy, matplotlib, pandas, numpy).
-- **Use the project venv** (system python has no dependencies installed):
-  `.venv/bin/python -m pytest` or activate `.venv` first.
-- Run tests: **`pytest`** from repo root (config in `pyproject.toml`:
-  `pythonpath = ["."]`, `testpaths = ["tests"]`).
-- Run a single module's tests: `pytest tests/test_audio_loader.py`.
-- No GPU is required for Weeks 1–3 (Local CPU). Modal (L4) is used from
-  Week 2 onward for cloud runs — see §9 Compute Discipline.
-- Import style: modules live under `src/` (e.g. `from src.audio.loader
-  import load_audio`), enabled by the `pythonpath` setting.
+- Python **>= 3.10**. Install: `pip install -e .`
+- Use the project venv: `.venv/bin/python -m pytest` (system Python
+  does not have the dependencies).
+- Tests: `pytest` from repo root (`pythonpath = ["."]`,
+  `testpaths = ["tests"]`).
+- Imports: `from src.audio.loader import load_audio`.
+- Week 1 is local CPU. Modal L4 is allowed from the first ASR session
+  and is required for any latency, RTF, or memory comparison.
 
 ---
 
-## 5. Executing a Day File (the Core Loop)
+## 5. Session specs
 
-When given a day file (`docs/days/day_NN.md`):
+When implementing from `docs/days/day_NN.md`:
 
-1. **Read the v1 status banner** under the title. It overrides the file body:
-   - `CORE` — full session; execute Learn → Build → Experiment → Artifacts.
-   - `LEARN-ONLY` — theory only; no build session, no artifacts, no commit of code.
-   - `MERGED` — its work happens inside the absorbing day; never run standalone.
-   - `DROPPED` — never scheduled; optional reading at most.
-2. **Learn block first.** Never start building before the day's Learn content
-   is understood; the human, not the agent, must be able to defend it later.
-3. **Build and measure** exactly what the day file specifies — minimum viable
-   version, then measure. Resist scope creep beyond Required Output.
-4. **Produce the Required Output artifacts** at the exact paths the day file
-   names (`results/dayNN_*.csv`, `src/...`, `docs/*notes*.md`). Paths are
+1. Read the status banner under the title. It overrides the file body:
+   - `CORE` — full session: learn, build, measure, artifacts.
+   - `LEARN-ONLY` — theory only; no build, no artifacts, no code commit.
+   - `MERGED` — work happens inside the absorbing session; do not run it
+     standalone.
+   - `DROPPED` — not scheduled.
+2. Do not start the build until the Learn content is understood well
+   enough to defend. Print one concrete example after coding (shape,
+   units, seed, path). “The files exist” is not the Completion Check.
+3. Build exactly what the spec asks — minimum viable, then measure.
+   SpeechDamageBench is a nested package with its **own**
+   `pyproject.toml`. Never overwrite the repo-root `mendspeech`
+   `pyproject.toml`.
+4. Write artifacts at the exact paths the spec names. Paths are
    contracts.
-5. **Check the Completion Check** honestly. If it fails, the day is not done.
-6. **End with a commit** (see §8) containing the day's code + artifacts.
+5. Honor the Completion Check honestly.
+6. Commit that session's code and artifacts (see §8).
 
-If a day's status ever changes, the day-file banner, its week guide's
-compression map, and `docs/REVISED_EXECUTION_PLAN.md` must change together in
-one commit.
-
----
-
-## 6. Coding Standards
-
-Match the style already established in `src/audio/`:
-
-- **Type hints everywhere** on public functions; `typing` module forms
-  (`Optional`, `Tuple`, `Union`, `Dict`) as currently used.
-- **Docstrings:** module-level summary + Google-style `Args:`/`Returns:` on
-  public functions. Explain units (Hz, dB, seconds) — this is an audio project.
-- **Dataclasses** for structured records (see `AudioMetadata`).
-- **Determinism is a product feature:** every damage/ corruption /
-  augmentation operation takes an explicit random seed; every generated
-  artifact records corruption name, severity, seed, source ID, parameters,
-  and package version. No unseeded randomness, ever.
-- **Tests live in `tests/test_*.py`** and mirror the src layout. New public
-  functions get tests in the same session; shape/gradient assertions for
-  tensor code (see `tests/test_audio_loader.py` for the pattern).
-- **numpy ↔ torch boundary:** keep conversions explicit; prefer torch
-  tensors at module boundaries, numpy inside measurement utilities.
-- Notebooks are for exploration and figures only (`notebooks/dayNN_*.ipynb`);
-  all reusable logic goes in `src/` with tests.
+If a session's status changes, update the day-file banner, the week
+guide's compression map, and `docs/REVISED_EXECUTION_PLAN.md` in the
+same commit.
 
 ---
 
-## 7. Data & Artifact Policy
+## 6. Coding standards
 
-- Audio files (`*.wav/mp3/flac/ogg`), checkpoints (`*.pt/*.pth/*.ckpt/*.onnx/
-  *.nemo`), wandb/runs logs are **gitignored — never commit them.**
-- Commit instead: manifests (`data/*.csv|json`), metric tables
-  (`results/dayNN_*.csv`), figures (`results/*.png`), notes
-  (`docs/*notes*.md`), and code/tests.
-- Result files are named `dayNN_<what>.<ext>` (e.g.
-  `results/day40_quantization_tradeoffs.csv`) exactly as day files specify.
-- Every committed result gets a row in `results/README.md` (day → artifact →
-  one-line finding) in the same session that produces it.
-- The frozen evaluation set (≥30 transcripted utterances, ≥5 speakers,
-  speaker-separated splits) is immutable once frozen. Never regenerate or
-  re-split it; new experiments get new corruption configs, not a new test set.
+Match `src/audio/`:
+
+- Type hints on public functions; `typing` forms (`Optional`, `Tuple`,
+  `Union`, `Dict`) as currently used.
+- Module docstring plus Google-style `Args:` / `Returns:` on public
+  functions. State units (Hz, dB, seconds).
+- Dataclasses for structured records (`AudioMetadata`, `LogMelMetadata`).
+- **Determinism is a product feature.** Every damage, corruption, or
+  augmentation takes an explicit seed. Every generated artifact records
+  corruption name, severity, seed, source ID, parameters, and package
+  version. No unseeded randomness.
+- Tests in `tests/test_*.py`, written in the same session as the public
+  function. Shape and gradient assertions for tensor code.
+- Keep numpy ↔ torch conversions explicit. Prefer torch at module
+  boundaries; numpy inside measurement utilities.
+- Notebooks are for figures. Reusable logic lives in `src/` with tests.
 
 ---
 
-## 8. Git Standards (Mandatory)
+## 7. Data and artifacts
 
-- **Conventional Commits:** `type(scope): imperative subject` — types:
-  `feat`, `fix`, `docs`, `test`, `chore`, `refactor`. Scopes by subsystem:
-  `audio`, `asr`, `bench`, `plan`, `week3`, etc.
-- Subject ≤ 72 chars, lowercase, imperative, no trailing period. Body wrapped
-  ≤ 72 chars, explaining **what and why**.
-- **Atomic commits:** one logical change per commit — never mix plan edits
-  with feature code; day-session commits include that day's code + artifacts.
+- Never commit audio (`*.wav` / `mp3` / `flac` / `ogg`), checkpoints
+  (`*.pt` / `*.pth` / `*.ckpt` / `*.onnx` / `*.nemo`), or wandb/run logs.
+- Do commit manifests (`data/*.csv|json`), metric tables, figures,
+  notes, and code/tests.
+- Result files are named `dayNN_<what>.<ext>` when a session spec
+  names that path.
+- Every committed result gets a row in `results/README.md` in the same
+  session (day → artifact → one-line finding).
+- Once frozen, the evaluation set (≥30 transcripted utterances, ≥5
+  speakers, speaker-separated splits) is immutable. New experiments get
+  new corruption configs, not a new test set.
+
+---
+
+## 8. Git
+
+- Conventional Commits: `type(scope): imperative subject`. Types:
+  `feat`, `fix`, `docs`, `test`, `chore`, `refactor`. Scopes follow
+  the subsystem (`audio`, `asr`, `bench`, `plan`).
+- Subject ≤ 72 chars, lowercase, no trailing period. Body wrapped ≤ 72
+  chars: what and why.
+- One logical change per commit. Do not mix plan edits with feature
+  code.
 - `pytest` green before committing code changes.
-- Never force-push, never rebase pushed commits, never amend pushed history.
+- Never force-push, rebase pushed commits, or amend pushed history.
 
 ---
 
-## 9. Compute Discipline
+## 9. Compute
 
-- Respect the `Compute Target` in each day file. Default cloud tier: **Modal
-  L4**.
-- **L40S is banned for latency, RTF, or memory comparisons** — it invalidates
-  cross-run comparisons. Measured efficiency numbers come from L4 only.
-- Total Modal budget for the project is ~$15–30. Prefer the cheapest tier
-  that fits the experiment; cache ASR outputs to avoid re-running inference.
-- Batch-size / hardware changes invalidate comparisons — if an experiment
-  needs different hardware, note it in the results file rather than silently
-  mixing tiers.
+- Honor the `Compute Target` on the session spec. Default cloud tier:
+  **Modal L4**.
+- **L40S is banned** for latency, RTF, or memory comparisons. Measured
+  efficiency numbers come from L4 only.
+- Prefer the cheapest tier that fits. Cache ASR outputs. Budget is
+  roughly $15–30 for the whole project.
+- A hardware or batch-size change invalidates a comparison. If you must
+  switch, say so in the results file. Do not mix tiers silently.
 
 ---
 
-## 10. Behavior Boundaries
+## 10. Boundaries
 
-- **Touch:** `src/`, `tests/`, `notebooks/`, `results/`, `data/` manifests,
-  and — when explicitly asked — the planning docs in `docs/`.
-- **Never touch:** `pdfs/` (archived originals), `PRIVATE_PLAN_NOTES.md`,
-  `.gitignore`'s private-notes entry, the frozen evaluation set, and any
-  `results/` file belonging to a previously frozen benchmark run.
-- **When uncertain:** follow the day file literally and flag the question in
-  your response. Smallest correct change beats clever refactors.
-- **Never mark, claim, or imply a day is complete when it is not.** Partial
-  work is committed as partial, with an honest message.
+- **Touch:** `src/`, `tests/`, `notebooks/`, `results/`, `data/`
+  manifests, and — when explicitly asked — planning docs in `docs/`.
+- **Never touch:** `pdfs/`, `PRIVATE_PLAN_NOTES.md`,
+  `PRIVATE_LEARNING_WITH_AGENTS.md`, `.gitignore`'s private-notes
+  entries, the frozen evaluation set, or a `results/` file from a
+  previously frozen benchmark run.
+- **When uncertain:** follow the session spec literally and flag the
+  question. Smallest correct change beats a clever refactor.
+- Never mark a session complete when it is not. Partial work is
+  committed as partial, with an honest message.

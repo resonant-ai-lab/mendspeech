@@ -39,6 +39,8 @@ results/logs/
 
 # Private planning notes — personal schedule/job material, never publish
 PRIVATE_PLAN_NOTES.md
+PRIVATE_LEARNING_WITH_AGENTS.md
+docs/LEARNING_WITH_AGENTS.md
 
 # Scratch & IDE
 scratch/

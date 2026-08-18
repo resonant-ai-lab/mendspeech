@@ -22,7 +22,12 @@ small runs`
 - Run a pretrained ASR model on clean and damaged SpeechDamageBench clips.
 - Store transcript, token outputs if available, and timing metadata.
 - Add a reusable Modal entry point so the same command can run ASR experiments on an L4 without editing deployment code each day.
-- Smoke-test the pretrained direct audio inpainting baseline chosen for Week 8: install it, run one masked span, and record install steps plus a fallback in `docs/baseline_install_notes.md`.
+- Smoke-test the Week 8 direct audio inpainting baseline. Choose a
+  **public, installable** pretrained model (Voicebox is not a clean public
+  baseline; F5-TTS is TTS, not inpainting). Record install steps plus a
+  fallback in `docs/baseline_install_notes.md`. If the install works, run
+  one masked span. If it does not fit this session, the notes + fallback
+  are the minimum — do not spend the night model-hunting.
 
 ---
 
@@ -35,6 +40,7 @@ small runs`
 - `src/asr/baseline.py`
 - `infra/modal_asr.py`
 - `results/day08_baseline_transcripts.csv`
+- `docs/baseline_install_notes.md` (chosen model, install command, fallback)
 
 ---
 

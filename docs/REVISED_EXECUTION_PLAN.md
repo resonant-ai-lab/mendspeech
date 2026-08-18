@@ -36,9 +36,35 @@ Everything else — blueprint, metrics, definition of done, split-session protoc
 - **Split sessions allowed:** a day's `Learn` block and its `Build`/`Experiment` blocks may happen in separate sittings on the same calendar day. Never start a build session without the Learn block read; never end one without a commit.
 - **Theory blocks are non-negotiable.** Under compression they are the first thing schedule pressure attacks and the last thing that can be cut — they are what makes the artifacts defensible.
 - **Timebox rule (unchanged):** maximum 2 extra sessions per day.
-- **Systems drills are parallel, not new days.** Run three 30-minute drills
-  per week from the systems track. Skip a drill before skipping a core
-  Learn/Build/Measure session.
+- **Systems drills are parallel, not new days.** Start the
+  [Speech-ML Systems Drill Track](SPEECH_ML_SYSTEMS_DRILLS.md) **after
+  Gate 2**. Three 30-minute drills per week from then on. Skip a drill
+  before skipping a core Learn/Build/Measure session. Week 1 has no
+  drill obligation.
+
+---
+
+## Week 1 data contract (do not wait for Day 07)
+
+Gate 1 fails if the labeled set is collected on the freeze day. Split the
+work:
+
+| When | What |
+| :--- | :--- |
+| Days 04–05 | Acquire a public transcripted subset (e.g. LibriSpeech `dev-clean`) into `data/benchmark/`. Relative paths, `transcript`, `speaker_id`. Reach ≥10 labeled clips by Day 05 and ≥30 / ≥5 speakers before Day 07. |
+| Day 07 | Freeze only: `data/benchmark_manifest.csv` with a `split` column, SpeechDamageBench v0.1, no new speakers. |
+| After Day 07 | The frozen set is immutable. New experiments get new corruption configs, not a new test set. |
+
+Speaker scale: **≥5 speakers is the floor.** Typical lab size is ~5. Week 8's
+caveat (“do not generalize from a ~5-speaker set”) is a reporting limit, not
+a command to stay at or under 5.
+
+SpeechDamageBench layout: nested package
+`speechdamagebench/speechdamagebench/` with its **own** `pyproject.toml`.
+Never overwrite the repo-root `mendspeech` `pyproject.toml`.
+
+Gate 1 is a Sunday. Sunday remains recovery-only for *new* material; Day 07
+may use 23 Aug as the allowed catch-up session if Days 04–06 landed.
 
 ---
 

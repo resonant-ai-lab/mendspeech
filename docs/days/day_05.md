@@ -25,7 +25,10 @@
 ---
 
 ### 3. Experiment and Measure
-- Run all corruption levels on at least ten clips.
+- Run all corruption levels on at least ten **labeled** clips from
+  `data/benchmark/` (or `data/benchmark/` plus `data/clean_manifest.csv` if
+  those rows have transcripts). If fewer than ten labeled clips exist, finish
+  the corpus first — do not invent metrics on five unlabeled files.
 - Look for cases where a metric disagrees with your listening judgment.
 
 ---

@@ -8,6 +8,13 @@
 ### Compute Target
 `Local CPU`
 
+> **Carry-forward from Day 01:** if `data/benchmark/` is still missing a
+> labeled set, start it in this session. Day 07 only *freezes* the set; it
+> does not collect it. Target: public transcripted speech (e.g. LibriSpeech
+> `dev-clean`), relative paths, a `transcript` column, ≥5 speaker IDs.
+> Reaching the full ≥30 utterances can finish on Day 05 — do not wait until
+> Day 07.
+
 ---
 
 ### 1. Learn
@@ -19,10 +26,14 @@
 ---
 
 ### 2. Build in MendSpeech
-- Create an installable speechdamagebench package instead of burying corruptions inside MendSpeech.
+- Create SpeechDamageBench as a **nested standalone package**. Do **not**
+  overwrite the repo-root `pyproject.toml` (that file belongs to `mendspeech`).
 - Implement noise, clipping, bandwidth reduction, dropout, and simple reverberation modules.
 - Add a seed controlled configuration object and a small command line entry point.
 - Record corruption name, severity, seed, parameters, and clean source id for every output.
+- Presets live in `speechdamagebench/speechdamagebench/presets.py`. If you
+  also want YAML, keep it inside the package (`presets/damage_levels.yaml`)
+  so there is one source of truth.
 
 ---
 
@@ -34,12 +45,12 @@
 ---
 
 ### 4. Required Output Artifacts
-- `speechdamagebench/audio_damage.py`
-- `speechdamagebench/presets.py`
-- `speechdamagebench/cli.py`
-- `pyproject.toml`
-- `tests/test_determinism.py`
-- `configs/damage_levels.yaml`
+- `speechdamagebench/pyproject.toml` (package name `speechdamagebench`; do not touch repo-root `pyproject.toml`)
+- `speechdamagebench/speechdamagebench/audio_damage.py`
+- `speechdamagebench/speechdamagebench/presets.py`
+- `speechdamagebench/speechdamagebench/cli.py`
+- `speechdamagebench/tests/test_determinism.py`
+- `data/benchmark/` begun if still missing (manifest with relative paths + transcripts)
 
 ---
 

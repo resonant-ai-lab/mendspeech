@@ -16,7 +16,7 @@
 - Abstract, motivation, hypotheses, method, baselines, metrics, results, limitations, ethics, and future work.
 - Difference between observation and causal claim.
 - How to report a negative or mixed architectural comparison honestly.
-- Benchmark scale and its statistical limits: never claim population-level generalization from ≤5 speakers.
+- Benchmark scale and its statistical limits: never claim population-level generalization from a ~5-speaker lab set.
 
 ---
 

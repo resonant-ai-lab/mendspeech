@@ -104,7 +104,9 @@
 ---
 
 ## 6. Hardware Strategy
-- **Weeks 1 to 3:** Run locally on CPU. Only use GPU when scaling test runs.
+- **Week 1:** Local CPU only.
+- **Week 2:** Local CPU for theory days; Modal L4 optional from Day 08 for ASR and the inpainting smoke-test.
+- **Week 3:** Local CPU. GPU only for optional scaling checks.
 - **Weeks 4 to 8:** Default to **Modal L4 (24GB VRAM)** for reproducible inference, streaming, fine-tuning, and benchmarks.
 - **Hardware Consistency:** Keep hardware strictly fixed across any latency, RTF, or memory comparison.
 - **Budget Reality:** Modal L4 costs roughly $0.38/hour; expect 30–60 GPU-hours across Weeks 4–8 (≈ **$15–30 total**). Batch experiments to avoid per-run cold-start overhead, and never use a larger GPU (L40S/A100) for any latency, RTF, or memory comparison.

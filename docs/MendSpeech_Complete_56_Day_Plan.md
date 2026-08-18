@@ -138,10 +138,11 @@ same task in the next session instead of pretending the day is finished.
 - Versioned severity presets and manifest metadata.
 
 ### Build in MendSpeech
-- Create an installable speechdamagebench package instead of burying corruptions inside MendSpeech.
+- Create SpeechDamageBench as a nested standalone package. Do **not** overwrite the repo-root `pyproject.toml`.
 - Implement noise, clipping, bandwidth reduction, dropout, and simple reverberation modules.
 - Add a seed controlled configuration object and a small command line entry point.
 - Record corruption name, severity, seed, parameters, and clean source id for every output.
+- If `data/benchmark/` is still empty, begin the labeled corpus here.
 
 ### Experiment and Measure
 - Generate mild, medium, and severe examples from the same clean sentence.
@@ -149,12 +150,12 @@ same task in the next session instead of pretending the day is finished.
 - Change only the seed and verify that the corruption changes while all configured parameters remain fixed.
 
 ### Required Output
-- `speechdamagebench/audio_damage.py`
-- `speechdamagebench/presets.py`
-- `speechdamagebench/cli.py`
-- `pyproject.toml`
-- `tests/test_determinism.py`
-- `configs/damage_levels.yaml`
+- `speechdamagebench/pyproject.toml` (do not touch repo-root `pyproject.toml`)
+- `speechdamagebench/speechdamagebench/audio_damage.py`
+- `speechdamagebench/speechdamagebench/presets.py`
+- `speechdamagebench/speechdamagebench/cli.py`
+- `speechdamagebench/tests/test_determinism.py`
+- `data/benchmark/` begun if still missing
 
 ### Completion Check
 > Another project can install SpeechDamageBench and regenerate the same damaged
@@ -186,7 +187,7 @@ same task in the next session instead of pretending the day is finished.
 - Store results in a tidy CSV schema with clip id, corruption, severity, seed, and measurements.
 
 ### Experiment and Measure
-- Run all corruption levels on at least ten clips.
+- Run all corruption levels on at least ten labeled clips. If fewer than ten labeled clips exist, finish the corpus first.
 - Look for cases where a metric disagrees with your listening judgment.
 
 ### Required Output
@@ -228,7 +229,7 @@ same task in the next session instead of pretending the day is finished.
 
 ### Required Output
 - `app/audio_lab.py`
-- `screenshots/week1_audio_console.png`
+- `results/week1_audio_console.png`
 
 ### Completion Check
 > Another person can open the tool, damage an utterance, and understand the visual
@@ -254,7 +255,7 @@ same task in the next session instead of pretending the day is finished.
 
 ### Build in MendSpeech
 - Clean repository structure.
-- Freeze SpeechDamageBench v0.1 severity presets and a benchmark set of **≥30 utterances across ≥5 speakers with reference transcripts**, written as speaker-separated train/val/test manifest files.
+- **Freeze only.** The labeled set must already exist. Freeze SpeechDamageBench v0.1 severity presets and a benchmark set of **≥30 utterances across ≥5 speakers with reference transcripts** (typically ~5 speakers at this lab scale), written as speaker-separated train/val/test splits in `data/benchmark_manifest.csv`.
 - Tag the benchmark package schema and add a minimal usage example independent of MendSpeech.
 
 ### Experiment and Measure
@@ -262,7 +263,7 @@ same task in the next session instead of pretending the day is finished.
 
 ### Required Output
 - `reports/week1_audio_foundations.md`
-- `data/benchmark_manifest.csv` (train/val/test splits, transcripts included)
+- `data/benchmark_manifest.csv` (relative paths, `transcript`, `speaker_id`, `split`)
 - `speechdamagebench/README.md`
 - `speechdamagebench/VERSION`
 
@@ -312,7 +313,7 @@ small runs`
 - Run a pretrained ASR model on clean and damaged SpeechDamageBench clips.
 - Store transcript, token outputs if available, and timing metadata.
 - Add a reusable Modal entry point so the same command can run ASR experiments on an L4 without editing deployment code each day.
-- Smoke-test the pretrained direct audio inpainting baseline chosen for Week 8: install it, run one masked span, and record install steps plus a fallback in `docs/baseline_install_notes.md`.
+- Smoke-test a public, installable Week 8 inpainting baseline (not Voicebox). Record install + fallback in `docs/baseline_install_notes.md`. One masked span if install works; do not spend the night model-hunting.
 
 ### Experiment and Measure
 - Compare clean and corrupted transcripts on the exact same utterances.
@@ -321,6 +322,7 @@ small runs`
 - `src/asr/baseline.py`
 - `infra/modal_asr.py`
 - `results/day08_baseline_transcripts.csv`
+- `docs/baseline_install_notes.md`
 
 ### Completion Check
 > You can draw the path from features to encoder states to token probabilities to text,
@@ -1951,7 +1953,7 @@ dry run`
 - Primary question: can selective semantic repair improve intelligibility while preserving more original speech than full resynthesis?
 - Secondary question: can uncertainty guided context allocation improve the latency versus accuracy operating point?
 - Architecture question: when does cascaded ASR plus TTS repair beat or lose to a pretrained direct latent or codec audio inpainting baseline?
-- Scope every claim to the frozen benchmark scale (≥30 utterances, ≤5 speakers) and state the statistical caveat explicitly.
+- Scope every claim to the frozen benchmark scale (≥30 utterances, ≥5 speakers, typically ~5 at this lab) and state the statistical caveat explicitly — do not claim population-level generalization.
 - Define null outcomes, failure criteria, and claims you will not make.
 
 ### Build in MendSpeech
@@ -2160,7 +2162,7 @@ same task in the next session instead of pretending the day is finished.
 - Abstract, motivation, hypotheses, method, baselines, metrics, results, limitations, ethics, and future work.
 - Difference between observation and causal claim.
 - How to report a negative or mixed architectural comparison honestly.
-- Benchmark scale and its statistical limits: never claim population-level generalization from ≤5 speakers.
+- Benchmark scale and its statistical limits: never claim population-level generalization from a ~5-speaker lab set.
 
 ### Build in MendSpeech
 - Write the complete report.

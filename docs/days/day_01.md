@@ -8,6 +8,10 @@
 ### Compute Target
 `Local CPU`
 
+> **Still open after Day 01:** `data/benchmark/` and the `transcript` column
+> were required here and were not finished. Do not re-run Day 01. Carry that
+> labeled-corpus work into [Day 04](day_04.md). Use relative paths only.
+
 ---
 
 ### 1. Learn

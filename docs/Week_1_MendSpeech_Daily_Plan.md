@@ -9,7 +9,11 @@
 > **Week Milestone:**  
 > Build the audio laboratory and make SpeechDamageBench a deterministic standalone package.
 >
-> **v1 October calendar:** Gate 1 target **Aug 23**. Day 01 is complete; Days 02–07 run as written.
+> **v1 October calendar:** Gate 1 target **Aug 23**. Day 01 audio notes
+> exist; the labeled benchmark corpus (`data/benchmark/`, transcripts,
+> ≥5 speakers) is still open and is absorbed by Days 04–05. Day 07
+> **freezes** that set — it does not collect it. Sunday 23 Aug may be
+> used as the allowed catch-up session for Day 07.
 
 ---
 
@@ -136,10 +140,11 @@ same preprocessing from code.
 - Versioned severity presets and manifest metadata.
 
 #### Build in MendSpeech
-- Create an installable speechdamagebench package instead of burying corruptions inside MendSpeech.
+- Create SpeechDamageBench as a nested standalone package. Do **not** overwrite the repo-root `pyproject.toml`.
 - Implement noise, clipping, bandwidth reduction, dropout, and simple reverberation modules.
 - Add a seed controlled configuration object and a small command line entry point.
 - Record corruption name, severity, seed, parameters, and clean source id for every output.
+- If `data/benchmark/` is still empty, begin the labeled corpus here (relative paths, transcripts, ≥5 speaker IDs).
 
 #### Experiment and Measure
 - Generate mild, medium, and severe examples from the same clean sentence.
@@ -147,12 +152,12 @@ same preprocessing from code.
 - Change only the seed and verify that the corruption changes while all configured parameters remain fixed.
 
 #### Required Output
-- `speechdamagebench/audio_damage.py`
-- `speechdamagebench/presets.py`
-- `speechdamagebench/cli.py`
-- `pyproject.toml`
-- `tests/test_determinism.py`
-- `configs/damage_levels.yaml`
+- `speechdamagebench/pyproject.toml` (do not touch repo-root `pyproject.toml`)
+- `speechdamagebench/speechdamagebench/audio_damage.py`
+- `speechdamagebench/speechdamagebench/presets.py`
+- `speechdamagebench/speechdamagebench/cli.py`
+- `speechdamagebench/tests/test_determinism.py`
+- `data/benchmark/` begun if still missing
 
 #### Completion Check
 > Another project can install SpeechDamageBench and regenerate the same damaged
@@ -175,7 +180,7 @@ clip from a manifest entry.
 - Store results in a tidy CSV schema with clip id, corruption, severity, seed, and measurements.
 
 #### Experiment and Measure
-- Run all corruption levels on at least ten clips.
+- Run all corruption levels on at least ten labeled clips. If fewer than ten labeled clips exist, finish the corpus first.
 - Look for cases where a metric disagrees with your listening judgment.
 
 #### Required Output
@@ -208,7 +213,7 @@ clip from a manifest entry.
 
 #### Required Output
 - `app/audio_lab.py`
-- `screenshots/week1_audio_console.png`
+- `results/week1_audio_console.png`
 
 #### Completion Check
 > Another person can open the tool, damage an utterance, and understand the visual
@@ -225,7 +230,7 @@ change without reading your code.
 
 #### Build in MendSpeech
 - Clean repository structure.
-- Freeze SpeechDamageBench v0.1 severity presets and a benchmark set of **≥30 utterances across ≥5 speakers with reference transcripts**, written as speaker-separated train/val/test manifest files.
+- **Freeze only.** The labeled set must already exist. Freeze SpeechDamageBench v0.1 severity presets and a benchmark set of **≥30 utterances across ≥5 speakers with reference transcripts** (typically ~5 speakers at this lab scale), written as speaker-separated train/val/test splits in `data/benchmark_manifest.csv`.
 - Tag the benchmark package schema and add a minimal usage example independent of MendSpeech.
 
 #### Experiment and Measure
@@ -233,7 +238,7 @@ change without reading your code.
 
 #### Required Output
 - `reports/week1_audio_foundations.md`
-- `data/benchmark_manifest.csv` (train/val/test splits, transcripts included)
+- `data/benchmark_manifest.csv` (relative paths, `transcript`, `speaker_id`, `split`)
 - `speechdamagebench/README.md`
 - `speechdamagebench/VERSION`
 

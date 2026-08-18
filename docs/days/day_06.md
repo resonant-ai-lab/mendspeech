@@ -32,7 +32,7 @@
 
 ### 4. Required Output Artifacts
 - `app/audio_lab.py`
-- `screenshots/week1_audio_console.png`
+- `results/week1_audio_console.png`
 
 ---
 

@@ -44,7 +44,7 @@ When working with an AI agent:
    - **65 min:** Build code and run experiments under `# 2. Build` and `# 3. Experiment and Measure`.
    - **20 min:** Update the research notebook (`notebooks/` or `results/`).
    - **10 min:** Validate against `# 5. Completion Check` and commit artifacts under `# 4. Required Output`.
-3. **Keep Compute Fixed:** Check the `Compute Target` (e.g., Local CPU for Weeks 1–3, Modal L4 for Weeks 4–8).
+3. **Keep Compute Fixed:** Check the day's `Compute Target`. Week 1 is Local CPU. Modal L4 starts as an option on Day 08 and is the default for measured GPU work from Week 4 onward.
 
 ---
 

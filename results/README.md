@@ -10,6 +10,8 @@ project. Result files follow the `dayNN_<what>.<ext>` naming convention.
 | 01 | `day01_sampling_rate_spectrum_comparison.png` | Visual proof of the table: spectra at each sample rate truncate at their Nyquist frequency; speech formant energy survives at 16 kHz, so 16 kHz is the project's working rate. |
 | 02 | `day02_stft_parameter_grid.png` | STFT tradeoff measured on one utterance: 16 ms windows resolve plosive timing but blur harmonics; 128 ms windows resolve harmonics but smear onsets. Hop changes sampling density only, not resolution. Speech standard: 25 ms window / 10 ms hop at 16 kHz (n_fft=400, hop=160). |
 | 03 | `day03_mel_bins_comparison.png` | Mel bin count sweep on one 6 s utterance: 40/80/128 bands → 93.9/187.8/300.5 KB per feature matrix, visual detail grows but 128 bands at n_fft=400 leave top filters with zero linear-bin coverage (torchaudio warning) — 80 bands is the supported ASR standard. Log-Mel shape contract: n_mels fixed, frames scale with duration (601 frames @ 6.00 s vs 651 @ 6.50 s). |
+| 04 | `day04_determinism.csv` | Same seed (7) reproduces an identical medium-noise waveform; seed 8 changes the realization while SNR stays 10 dB. Clipping and bandwidth ignore the seed (they are parameter-only) and still record it. |
+| 04 | `day04_severity_grid.png` | One labeled LibriSpeech sentence, seed 7: mild / medium / severe for noise, clipping, bandwidth, dropout, and reverberation. Length and 16 kHz rate stay fixed. |
 
 ## Naming rules
 

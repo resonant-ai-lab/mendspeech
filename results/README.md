@@ -12,6 +12,7 @@ project. Result files follow the `dayNN_<what>.<ext>` naming convention.
 | 03 | `day03_mel_bins_comparison.png` | Mel bin count sweep on one 6 s utterance: 40/80/128 bands → 93.9/187.8/300.5 KB per feature matrix, visual detail grows but 128 bands at n_fft=400 leave top filters with zero linear-bin coverage (torchaudio warning) — 80 bands is the supported ASR standard. Log-Mel shape contract: n_mels fixed, frames scale with duration (601 frames @ 6.00 s vs 651 @ 6.50 s). |
 | 04 | `day04_determinism.csv` | Same seed (7) reproduces an identical medium-noise waveform; seed 8 changes the realization while SNR stays 10 dB. Clipping and bandwidth ignore the seed (they are parameter-only) and still record it. |
 | 04 | `day04_severity_grid.png` | One labeled LibriSpeech sentence, seed 7: mild / medium / severe for noise, clipping, bandwidth, dropout, and reverberation. Length and 16 kHz rate stay fixed. |
+| 05 | `week1_damage_metrics.csv` | 150 rows: 10 clips × 5 corruptions × 3 severities. Additive noise SNR matches presets exactly (20/10/0 dB). Reverberation produces negative SNR (-8 to -3 dB) despite sounding natural at mild severity — SNR is misleading for correlated distortions. Clipping mild can be a no-op when peak < threshold. Bandwidth loss yields low SNR even at mild severity while speech remains intelligible. See docs/metric_limitations.md. |
 
 ## Naming rules
 

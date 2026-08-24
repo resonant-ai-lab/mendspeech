@@ -49,3 +49,8 @@ week1/
 .vscode/
 *.swp
 *.swo
+
+# Python build artifacts
+*.egg-info/
+build/
+dist/

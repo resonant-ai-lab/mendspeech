@@ -13,6 +13,7 @@ project. Result files follow the `dayNN_<what>.<ext>` naming convention.
 | 04 | `day04_determinism.csv` | Same seed (7) reproduces an identical medium-noise waveform; seed 8 changes the realization while SNR stays 10 dB. Clipping and bandwidth ignore the seed (they are parameter-only) and still record it. |
 | 04 | `day04_severity_grid.png` | One labeled LibriSpeech sentence, seed 7: mild / medium / severe for noise, clipping, bandwidth, dropout, and reverberation. Length and 16 kHz rate stay fixed. |
 | 05 | `week1_damage_metrics.csv` | 150 rows: 10 clips × 5 corruptions × 3 severities. Additive noise SNR matches presets exactly (20/10/0 dB). Reverberation produces negative SNR (-8 to -3 dB) despite sounding natural at mild severity — SNR is misleading for correlated distortions. Clipping mild can be a no-op when peak < threshold. Bandwidth loss yields low SNR even at mild severity while speech remains intelligible. See docs/metric_limitations.md. |
+| 06 | `week1_audio_console.png` | Gradio console for side-by-side clean/damaged playback with waveform, spectrogram, and seed-aware measurements. Desktop comparison columns remain paired, while the layout collapses to one column on narrow screens. |
 
 ## Naming rules
 

@@ -16,7 +16,11 @@ LINK_PATTERN = re.compile(r"\]\(([^)#\s]+?)(?:#[^)]*)?\)")
 
 
 def _markdown_files() -> list[Path]:
-    files = [p for p in REPO_ROOT.rglob("*.md") if "pdfs" not in p.parts]
+    files = [
+        path
+        for path in REPO_ROOT.rglob("*.md")
+        if "pdfs" not in path.parts and ".venv" not in path.parts
+    ]
     assert files, "expected markdown documents to exist"
     return files
 

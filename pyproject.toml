@@ -13,6 +13,7 @@ dependencies = [
     "matplotlib>=3.7.0",
     "pandas>=2.0.0",
     "numpy>=1.24.0",
+    "gradio>=6.0.0",
 ]
 
 [tool.pytest.ini_options]

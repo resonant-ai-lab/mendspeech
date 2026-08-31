@@ -15,6 +15,8 @@ project. Result files follow the `dayNN_<what>.<ext>` naming convention.
 | 05 | `week1_damage_metrics.csv` | 150 rows: 10 clips × 5 corruptions × 3 severities. Additive noise SNR matches presets exactly (20/10/0 dB). Reverberation produces negative SNR (-8 to -3 dB) despite sounding natural at mild severity — SNR is misleading for correlated distortions. Clipping mild can be a no-op when peak < threshold. Bandwidth loss yields low SNR even at mild severity while speech remains intelligible. See docs/metric_limitations.md. |
 | 06 | `week1_audio_console.png` | Gradio console for side-by-side clean/damaged playback with waveform, spectrogram, and seed-aware measurements. Desktop comparison columns remain paired, while the layout collapses to one column on narrow screens. |
 
+| 07 | `day07_recreation.png` | Blank-notebook recreation: log-Mel (80 bins, 400/160) scales with duration (1496 frames @ 14.95 s) and additive_noise medium seed 7 reproduces SNR 10.00 dB deterministically — validates clean→corruption→feature path is teachable. |
+
 ## Naming rules
 
 - Result and notebook files carry the day prefix (`dayNN_<what>.<ext>`).

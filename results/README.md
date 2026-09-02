@@ -16,6 +16,7 @@ project. Result files follow the `dayNN_<what>.<ext>` naming convention.
 | 06 | `week1_audio_console.png` | Gradio console for side-by-side clean/damaged playback with waveform, spectrogram, and seed-aware measurements. Desktop comparison columns remain paired, while the layout collapses to one column on narrow screens. |
 
 | 07 | `day07_recreation.png` | Blank-notebook recreation: log-Mel (80 bins, 400/160) scales with duration (1496 frames @ 14.95 s) and additive_noise medium seed 7 reproduces SNR 10.00 dB deterministically — validates clean→corruption→feature path is teachable. |
+| 08 | `day08_baseline_transcripts.csv` | 30 runs: 5 clean clips × (1 clean + 5 medium corruptions). Clean ASR confidence averages 0.969; additive noise drives confidence down to 0.886 and produces phonetic substitutions/omissions; clipping preserves intelligibility at 0.970; reverberation and bandwidth loss cause perceptual misrecognitions while confidence stays relatively high, confirming raw softmax confidence alone requires calibration. |
 
 ## Naming rules
 
